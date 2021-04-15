@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Number Facts app</title> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" /> 
+        <style> 
+            #fact { display: none; } 
+        </style> 
+    </head> 
+    
+    <body class="bg-secondary"> 
+        <div class="container"> 
+            <div class="row"> 
+                <div class="col-md-6 mx-auto"> 
+                    <div class="card bg-primary text-white p-4 mt-5"> 
+                        <h1>
+                            Number Facts
+                        </h1> 
+                        <p>
+                            숫자를 입력하고 랜덤 Fact를 확인하세요.
+                        </p> 
+                        <input type="number" id="numberInput" class="form-control form-control-lg" placeholder="숫자를 입력하세요.." />
+                        <div id="fact" class="card-body">
+                            <h4 class="card-title">
+                                Number Fact 
+                            </h4>
+                            <p id="factText" class="card-text">
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/main.js"></script>
+    </body>
+</html>

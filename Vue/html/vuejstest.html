@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <style>
+        .demo {
+  width: 100px;
+  height: 100px;
+  background-color:grey;
+  display:inline-block;
+  margin: 10px;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+    </style>
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="dpp">
+    <!-- click 시 attachRed true/false 변경 -->
+    <!-- :class로 object를 바인딩-->
+    <div 
+      class="demo"
+      @click="attachRed = !attachRed" 
+      :class="{red: attachRed, green: !attachRed}"
+      class="demo"
+    >1</div>
+    <!--처음 1번 박스는 false로 지정이 되어있기때문에 초록색이 나온다.-->
+    
+    <div 
+      class="demo"
+      :class="color"
+      :style="{height: myHeight}"
+    >2</div>
+    
+    <div 
+      class="demo"
+      :class="divClasses"
+    >3</div>
+    
+    <div>
+      2번 상자의 색: <input type="text" v-model="color">  
+    </div>
+  </div>
+
+    <!-- 반복문
+        <div id="cpp">
+        <h1>장 목록</h1>
+        <ul>
+            <li v-for="(item, i) in list">{{item}}{{i+1}}</li>
+        </ul>
+        <h1>여행지 리스트</h1>
+        <ul>
+            <li v-for="city in travelList" :key="city.name">
+                {{city.name}} - {{city.distance}}
+            </li>
+        </ul>
+    </div> -->
+
+    <!--조건문 
+            <div id="bpp">
+            <p v-if ="dog">犬だよ</p>
+            <p v-else>いいえ、猫だよ</p>
+            <button v-on:click="dog = !dog">反対</button>
+            <template v-if="dog">
+                <p>1</p>                
+                <p>2</p>
+                <p>3</p>
+            </template>
+            <template v-else>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+            </template>
+        </div> -->
+
+    <!--이벤트
+        <div id="app">
+        <p>
+            {{isLargerThanTen()}}
+        </p>
+        <button v-on:click="count ++">button
+        </button>
+        <button v-on:click="count --">down button
+
+        </button>
+    </div> -->
+
+
+</body>
+<script src="../js/64things.js"></script>
+<script src="../js/64things2.js"></script>
+<script src="../js/64things3.js"></script>
+<script src="../js/64things4.js"></script>
+<!-- <script src="../js/listRendering.js"></script> -->
+<!-- <script src="../js/twoWayBinging.js"></script> -->
+<!-- <script src="../js/vuejs.js"></script> -->
+</html>
