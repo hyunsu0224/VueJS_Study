@@ -103,8 +103,47 @@
     <div id="watch-example">
         <p>
             yes/no give question :
-            <input v-model="question">
-        </p>
-        <p>{{ answer }}</p>
-    </div>
+            <input v-model="question">                          v-model은 뷰에서 양방향 바인딩을 가능하게 하는 것을 의미한다
+        </p>                                                    양방향 바인딩은 화면에서 입력을 받아 데이터로 다시 전달하는 과정이 추가되는 것
+        <p>{{ answer }}</p>                                     예를 들어서 question에 내용을 입력하면 그 내용이 뷰에 전달되어서 answer결과가
+    </div>                                                      도출되는데 영향을 미친다.
+
+    var watchExampleVM = new Vue ({
+        el : '#watch-example',
+        data : {
+            question : '',
+            answer : '질문전까지는 대답할 수 없습니다.'
+        },
+        watch : {
+            question : function (newQuestion) {
+                this.answer = '입력을 기다리는중'
+                this.debouncedGetAnswer()
+            }
+        },
+        created : function() {
+            this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+        },
+        methods : {
+            getAnswer : function(){
+                if (this.question.indexOf('?') === -1) {
+                    this.answer = '질문에는 일반적으로 물음표가 포함됩니다.')
+                    return
+                }
+                this.answer = '생각중...'
+                var vm = this
+                axios.get('http://yesno.wtf/api')                               axios란, 브라우저와 node.js를 위한 promiseAPI를
+                .then(function (response){                                      활용하는HTTP비동기 통신 라이브러리
+                    vm.answer = _.capitalize(response.data.answer)              promise란, 객체로써 비동기 작업이 맞이할 미래의 완료 또는 실패의 결과값
+                })
+                .catch(function (error) {
+                    vm.answer = '에러! API 요청에 오류가 있습니다. ' + error
+                })
+            }
+        }
+    })
+
+
+
+
+
 */
