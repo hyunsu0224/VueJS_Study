@@ -7,42 +7,31 @@
       var canvas = document.getElementById("canvas");
       if (canvas.getContext) {
         var ctx = canvas.getContext("2d");
+  
         ctx.beginPath();
-        ctx.fillStyle="rgb(100, 0, 0)";
-        ctx.fillRect (10, 10, 50, 50);
+        ctx.moveTo(50,50);
+        ctx.lineTo(200, 50);
+        ctx.lineTo(50,200);
         ctx.closePath();
+        ctx.stroke();
 
-        ctx.beginPath();
-        ctx.fillRect (200, 150, 100, 100);
-        ctx.lineWidth=20;
-        ctx.lineJoin='bevel';
-        ctx.strokeStyle='#38f';
-        ctx.closePath();
+        ctx.rect(50, 50, 75, 75);
+        ctx.stroke();
 
+        ctx.strokeRect(125, 125, 100, 100);
 
-        ctx.beginPath();
-        ctx.fillStyle="rgba(0, 0, 100, 0.5)";
-        ctx.fillRect (30, 30, 100, 100);
-        ctx.lineWidth= 15;
-        ctx.lineJoin='bevel';
-        ctx.strokeStyle='#38f';
-        ctx.strokeRect(30,30,100,100);
-        ctx.closePath();
-
-        ctx.beginPath();
-        ctx.fillStyle = 'white';
-        ctx.moveTo(0,0);
-        ctx.lineTo(150,75);
-        ctx.lineTo(0, 150);
-        ctx.closePath();
-        ctx.fill();
-        ctx.closePath();
-        
+        ctx.fillRect(225, 125, 100, 100);
       }
     }
   </script>
  </head>
  <body onload="draw();">
-   <canvas id="canvas" width="500" height="500"></canvas>
+  <style>
+    #canvas {
+      margin: 30px 0 0 30px;
+      border: 1px solid red;
+    }
+  </style>
+   <canvas id="canvas" width="640" height="480"></canvas>
  </body>
 </html>

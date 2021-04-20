@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+    {{ message }}
+    </div>
+
+    <div id="app2">     <!--v-bind 속성 디렉티브 효과라고도 함-->
+        <span v-bind:title="memo">
+            내 글 위에 마우스를 올리면 동적으로 바인딩 된 title를 볼 수 있습니다.
+        </span>
+    </div>
+
+    <div id="app3">     <!--vue의 트랜지션 효과 v-if-->
+        <p v-if="seen">이제 나를 볼수있어요</p>
+    </div>
+
+    <div id="app4">     <!--Todo 목록 테이블특성을 사용해서 콘솔창에서도 내용을 추가가 가능하도록 함 v-for ="tood in todos"-->
+        <ol>
+            <li v-for = "todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+ 
+    <div id="app5">     <!--버튼으로 글자를 뒤집는 앱의 상태만 변경이 가능하도록한다. -->
+        <p> {{ mojo }} </p>
+        <button v-on:click="reverseMessage">메시지 뒤집기</button>
+    </div>
+
+    <div id="app6">     <!--v-model 양방향으로 바인딩하는 디렉티브 입력값이 표기값과 그대로 새로고침이 된다.-->
+        <p>{{momo}} </p>
+        <input v-model="momo">
+    </div>
+
+
+<!--        잠깐 여기서 앞으로 계속 등장하게될 용어  Component란??
+            기본 HTML 엘리먼트를 확장하여 재사용 가능한 코드를 캡슐화 하는데 도움이됨
+            Vue 컴포넌트는 vue 인스턴스이기도 하다.
+            그러므로 모든 옵션 객체를 사용할 수 있다.
+            컴포넌트란 일종의 부분과 같은 느낌으로 영역 내에서 보여주고자 하는 
+            내용이 무엇인지 특징이 무엇인지를 활용해 나타낸다.
+-->
+                <!--컴포넌트를 등록하는 방법은 19study.js 59줄부터 기입-->
+
+    <div id="app7">
+        <ol>
+          <!--
+            이제 각 todo-item 에 todo 객체를 제공합니다.
+            화면에 나오므로, 각 항목의 컨텐츠는 동적으로 바뀔 수 있습니다.
+            또한 각 구성 요소에 "키"를 제공해야합니다 (나중에 설명 됨).
+           -->
+          <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id"
+          ></todo-item>
+        </ol>
+    </div>
+
+    <div id="app8">
+        <text-to></text-to>
+    </div>
+
+
+<script src="../js/19study.js"></script>
+</body>
+
+</html>
