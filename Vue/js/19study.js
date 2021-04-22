@@ -82,4 +82,5 @@ var app8 = new Vue({
 })
 
 
-//Vue component 지역등록하는 방법
+//Vue component 지역등록하는 방법 <
+// 20일부터 공부내용에 기록>
