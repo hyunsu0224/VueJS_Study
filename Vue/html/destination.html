@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.getElementById("sendedData").value = localStorage.getItem("data") ? localStorage.getItem("data") : "Default";
+
+        var url = new URL(window.location.href);
+    document.getElementById("sendedData").value = url.searchParams.get("data") ? url.searchParams.get("data") : "Default";
+
+    </script>
+</body>
+</html>
