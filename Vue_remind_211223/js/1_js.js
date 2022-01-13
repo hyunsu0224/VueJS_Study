@@ -63,3 +63,28 @@ var app6 = new Vue({
         message : 'hello Vue model'
     }
 })
+
+/* seventh-title */
+Vue.component('todo-item', {
+    // 이제 todo-item 컴포넌트는 "prop"라는 
+    // 사용자 정의 속성 같은 것을 입력 받을수 있다.
+    // 이 prop은 todo라는 이름으로 정의했다.
+    props : ['todo'],
+    template : '<li>{{ todo.text }}</li>'
+})
+
+var app7 = new Vue({
+    el : '#app-7',
+    data : {
+        groceryList : [
+            { id : 0, text : 'Vegetables' },
+            { id : 1, text : 'Cheese' },
+            { id : 2, text : 'Whatever else humans are supposed to eat' }
+        ],
+        groceryList2 : [
+            { id : 0, text : '0000'},
+            { id : 1, text : '1111'},
+            { id : 2, text : '2222'}
+        ]
+    }
+})

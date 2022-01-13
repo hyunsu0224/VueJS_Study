@@ -17,9 +17,11 @@
     <!--class나 id 값이나 한번 지정된 값은 중복해서 사용이 불가하다.-->
     <!--요소의 다른 data값을 사용하더라도 class 자체를 사용이 불가하다-->
     <div id="wrapper_">
+        <!-- 1 -->
         <div class="box_form">
             <div class="box_title">
-                Title : first
+                Title : first<br>
+                선언적 렌더링
             </div>
             <div id="app">
                 {{ message }}
@@ -37,7 +39,7 @@
                 {{ message2 }}
             </div>
         </div>
-
+        <!-- 2 -->
         <div class="box_form">
             <div class="box_title">
                 Title : Second<br>
@@ -56,11 +58,12 @@
                 </span>
             </div>
         </div>
-
+        <!-- 3 -->
         <div class="box_form">
             <div class="box_title">
                 Title : Third<br>
-                &lt; v-if에 관하여(true/false) &gt;
+                &lt; v-if에 관하여(true/false) &gt; <br>
+                조건문
             </div>
             <div class="box_explain">
                 「v-if」속성은 텍스쳐 혹은 지정한 요소의 관해서 true 값인경우 보여지게하고
@@ -74,11 +77,12 @@
                 </p>
             </div>
         </div>
-
+        <!-- 4 -->
         <div class="box_form">
             <div class="box_title">
                 Title : Fourth<br>
-                &lt; v-for에 관하여 &gt;
+                &lt; v-for에 관하여 &gt; <br>
+                반복문
             </div>
             <div class="box_explain">
                 「v-for」 디렉티브는 배열의 데이터를 바인딩하여 Todo 목록을 표시한다.<br><br>
@@ -92,11 +96,13 @@
                 </ol>
             </div>
         </div>
-
+        
+        <!-- 5 -->
         <div class="box_form">
             <div class="box_title">
                 Title : Fifth<br>
-                &lt; v-on에 관하여 &gt;
+                &lt; v-on에 관하여 &gt; <br>
+                사용자 입력 핸들링
             </div>
             <div class="box_explain">
                 「v-on」디렉티브는 vue인스턴스에서 메소드를 호출하는 이벤트 리스너를 추가가 가능하다.<br>
@@ -109,10 +115,12 @@
             </div>
         </div>
 
+        <!-- 6 -->
         <div class="box_form">
             <div class="box_title">
                 Title : Sixth<br>
-                &lt; v-model에 관하여 &gt;
+                &lt; v-model에 관하여 &gt; <br>
+                사용자 입력 핸들링
             </div>
             <div class="box_explain">
                 「v-model」디렉티브는 입력과 앱 상태를 양방향으로 바인딩하는 디렉티브<br>
@@ -124,14 +132,45 @@
             </div>
         </div>
 
+        <!-- 7 -->
         <div class="box_form">
             <div class="box_title">
+               Title : Seventh<br>
                중간 개념 설명<br>
                &lt; 컴포넌트 시스템 &gt; <br>
-
+               컴포넌트를 사용한 작성 방법
+            </div>
+            <div class="box_explain">
+                컴포넌트 시스템이란 작고 독립적이며 재사용할 수 있는 컴포넌트로 구성된<br>
+                대규모 application을 구축할 수 있게 해주는 추상적 개념이다.<br>
+                <a href="https://kr.vuejs.org/v2/guide/index.html#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%9E%91%EC%84%B1%EB%B0%A9%EB%B2%95"></a>
+                Vue에서 component는 미리 정의돈 옵션을 가진 vue 인스턴스이다. 고로 등록 방법이 비교적 간단하다.
+            </div>
+            <div id="app-7">
+                <ol>
+                    <!-- todo-item 컴포넌트의 인스턴스 만들기 -->
+                    <!--
+                       이제 v-bind를 사용해서 각각의 반복되는 todo-item component에 전달가능
+                       
+                       이제 각 todo-item에 todo 객체를 제공한다.
+                       화면에 나오므로, 각 항목의 컨텐츠는 동적으로 변경이 가능하다.
+                       또한 각 구성 요소에 "키"를 제공해야한다(나중에 내용에 추가설명될 예정)
+                    -->
+                    <todo-item
+                        v-for="item in groceryList"
+                        v-bind:todo="item"
+                        v-bind:key="item.id"
+                    ></todo-item>
+                    <todo-item
+                        v-for="item in groceryList2"
+                        v-bind:todo="item"
+                        v-bind:key="item.id">
+                    </todo-item>
+                </ol>
             </div>
         </div>
     </div>
+
     <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
     <script src="js/1_js.js"></script>    
 </body>
