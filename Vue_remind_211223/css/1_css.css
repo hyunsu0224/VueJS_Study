@@ -5,6 +5,10 @@
 body { 
     width: 100%;
 }
+.pre {
+    background-color : #eee;
+    margin: 10px 0 20px;
+}
 #wrapper_ {
     width: 1000px;
     padding-top : 30px

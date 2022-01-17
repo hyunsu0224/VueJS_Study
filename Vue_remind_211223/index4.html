@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4번째</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/1_css.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1 -->
+    <div class="box_form">
+        <div class="box_title">
+            Title : First<br>
+            &lt; computed와 watch &gt; <br>
+        </div>
+        <div class="box_explain">
+            Vue.js는 렌더링된 DOM을 기본 Vue 인스턴스의 데이터에 선언적으로 바인딩 할 수있는 HTML 기반 템플릿 구문을 사용합니다.<br>
+            모드 Vue.js 템플릿은 스펙을 호환하는 브라우저 및 HTML 파서로 구문 분석을 할 수 있는 유효한 HTML입니다.<br>
+            가상 DOM 개념에 익숙하고 JS의 기본 기능을 선호하는 경우 템플릿 대신 렌더링 함수를 직접 작성할수 있고 선택사항으로 JSX를 지원
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="box_form">
+        <div class="box_title">
+            Title : Second<br>
+            &lt; 보간법 &gt; <br>
+            &lt; Interpolation &gt; <br>
+        </div>
+        <div class="box_explain">
+            #문자열<br>
+            데이터 바인딩의 가장 기본 형태는 "Mustache"구문(이중 중괄호)을 사용한 텍스트 보간이다.<br>
+            <div class="pre">
+                <code>
+                    <span><</span>span<span>></span>메시지 : {{ msg }} <span><</span>/span<span>></span>
+                </code>
+            </div>
+            Mustache 태그는 해당 데이터 객체의 「msg」속성 값으로 대체됩니다. 또한 데이터 객체의 「msg」속성이 변경될 때마다 갱신됩니다.<br>
+            v-once 디렉티브를 사용하여 데이터 변경 시 업데이트 되지 않는 일회성 보간을 수행할 수 있지만, 같은 노드의 바인딩에도 영향을 미친다는 점
+            <div class="pre">
+                <code>
+                    <span><</span>span v-once<span>></span>다시는 변경하지 않습니다 : {{ msg }} <span><</span>/span<span>></span>
+                </code>
+            </div>
+            
+            <hr>
+            #원시 HTML<br>
+            이중 중괄호는 HTML이 아닌 일반 텍스트로 데이터를 해석한다.<br>
+            실제 HTML을 출력하려면 v-html 디렉티브를 사용해야한다.
+            <div class="pre">
+                <code>
+                    <span><</span>p<span>></span>Using mustaches: {{ rawHtml }}<span><</span>/p<span>></span><br>
+                    <span><</span>p<span>></span>Using v-html directive: <span><</span>span v-html:"rawHtml"<span>></span><span><</span>/p<span>></span>
+                </code>
+            </div>
+            <div id="app-2">
+                <p>Using mustaches : {{ rawHtml }}</p>
+                <p>Using v-html directive : <span v-html="rawHtml"></span></p>
+            </div>
+            <br>
+            span의 내용은 rawHtml로 대체된다. 이때 데이터 바인딩은 무시된다.<br>
+            Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 v-html을 이용해 템플릿을 사용할수 없다.<br>
+            이와 달리 컴포넌트는 UI 재사용 및 구성을 위한 기본 단위로 사용하는 것을 추천<br>
+            
+            <hr>
+            #속성 <br>
+            Mustache는 HTML 속성에서 사용할수 없다. 대신 v-bind디렉티브를 사용할수있다.<br>
+            <div class="pre">
+                <code>
+                    <span><</span>div v-bind:id="dynamicId"<span>></span><span><</span>/div<span>></span>
+                </code>
+            </div>
+            boolean 속성을 사용할 때 단순히 true 인 경우 v-bind는 조금 다르게 작동합니다.<br>
+            <div class="pre">
+                <code>
+                    <span><</span>button v-bind:disabed="isButtonDisabled"<span>></span>Button<span><</span>/button<span>></span>
+                </code>
+            </div>
+            isButtonDisabled가 null, undefined 또는 false의 값을 가지면 disabled 속성은 렌더링된 button엘리먼트에 포함되지 않는다.
+
+            <hr>
+            #JavaScript 표현식 사용<br>
+            지금까지 템플릿의 간단한 속성 키에만 바인딩했다. 그러나 실제로 Vue.js는 모든 데이터 바인딩내에서 js 표현식의 모든 기능을 지원했다.<br>
+            <div class="pre">
+                <code>
+                    <div>{{ number + 1 }}</div>
+                    <div>{{ ok ? 'YES' : 'NO' }}</div>
+                    <div>{{ message.split('').reverse().join('') }}</div>
+                    <span><</span>div v-bind:id="'list-' + id"<span>></span><span><</span>/div<span>></span>
+                </code>
+            </div>
+            이 표현식은 Vue 인스턴스 데이터 범위 내에서 JS로만 계산된다. 한가지 제한 사항은 각 바인딩에 하나의 단일 표현식만 포함될 수 있으므로<br>
+            아래처럼 작성하면 안된다.<br>
+
+        </div>
+        
+    </div>
+
+    
+    <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
+    <script src="js/4_js.js"></script>    
+</body>
+</html>
