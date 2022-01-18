@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3번째</title>
-    <script src="ht tps://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/1_css.css">
@@ -14,228 +14,274 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- 1 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : First<br>
-            &lt; 템플릿 문법 &gt; <br>
+    <div id="wrapper_">
+        <div class="page_ttl_">
+            <h2>
+                세번째 Study
+            </h2>
         </div>
-        <div class="box_explain">
-            Vue.js는 렌더링된 DOM을 기본 Vue 인스턴스의 데이터에 선언적으로 바인딩 할 수있는 HTML 기반 템플릿 구문을 사용합니다.<br>
-            모드 Vue.js 템플릿은 스펙을 호환하는 브라우저 및 HTML 파서로 구문 분석을 할 수 있는 유효한 HTML입니다.<br>
-            가상 DOM 개념에 익숙하고 JS의 기본 기능을 선호하는 경우 템플릿 대신 렌더링 함수를 직접 작성할수 있고 선택사항으로 JSX를 지원
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#template</a>
+                </li>
+                <li>
+                    <a href="#second_">#보간법</a>
+                </li>
+                <li>
+                    <a href="#third_">#디렉티브</a>
+                </li>
+                <li>
+                    <a href="#fourth_">#v-for</a>
+                </li>
+                <li>
+                    <a href="#fifth_">#v-on</a>
+                </li>
+                <li>
+                    <a href="#sixth_">#v-model</a>
+                </li>
+            </ul>
         </div>
-    </div>
-
-    <!-- 2 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : Second<br>
-            &lt; 보간법 &gt; <br>
-            &lt; Interpolation &gt; <br>
-        </div>
-        <div class="box_explain">
-            #문자열<br>
-            데이터 바인딩의 가장 기본 형태는 "Mustache"구문(이중 중괄호)을 사용한 텍스트 보간이다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>span<span>></span>메시지 : {{ msg }} <span><</span>/span<span>></span>
-                </code>
+        <!-- 1 -->
+        <div class="box_form">
+            <div class="box_title">
+                Title : First<br>
+                &lt; 템플릿 문법 &gt; <br>
             </div>
-            Mustache 태그는 해당 데이터 객체의 「msg」속성 값으로 대체됩니다. 또한 데이터 객체의 「msg」속성이 변경될 때마다 갱신됩니다.<br>
-            v-once 디렉티브를 사용하여 데이터 변경 시 업데이트 되지 않는 일회성 보간을 수행할 수 있지만, 같은 노드의 바인딩에도 영향을 미친다는 점
-            <div class="pre">
-                <code>
-                    <span><</span>span v-once<span>></span>다시는 변경하지 않습니다 : {{ msg }} <span><</span>/span<span>></span>
-                </code>
+            <div class="box_explain">
+                Vue.js는 렌더링된 DOM을 기본 Vue 인스턴스의 데이터에 선언적으로 바인딩 할 수있는 HTML 기반 템플릿 구문을 사용합니다.<br>
+                모드 Vue.js 템플릿은 스펙을 호환하는 브라우저 및 HTML 파서로 구문 분석을 할 수 있는 유효한 HTML입니다.<br>
+                가상 DOM 개념에 익숙하고 JS의 기본 기능을 선호하는 경우 템플릿 대신 렌더링 함수를 직접 작성할수 있고 선택사항으로 JSX를 지원
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="box_form">
+            <div class="box_title">
+                Title : Second<br>
+                &lt; 보간법 &gt; <br>
+                &lt; Interpolation &gt; <br>
+            </div>
+            <div class="box_explain">
+                #문자열<br>
+                데이터 바인딩의 가장 기본 형태는 "Mustache"구문(이중 중괄호)을 사용한 텍스트 보간이다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>span<span>></span>메시지 : {{ msg }} <span><</span>/span<span>></span>
+                    </code>
+                </div>
+                Mustache 태그는 해당 데이터 객체의 「msg」속성 값으로 대체됩니다. 또한 데이터 객체의 「msg」속성이 변경될 때마다 갱신됩니다.<br>
+                v-once 디렉티브를 사용하여 데이터 변경 시 업데이트 되지 않는 일회성 보간을 수행할 수 있지만, 같은 노드의 바인딩에도 영향을 미친다는 점
+                <div class="pre">
+                    <code>
+                        <span><</span>span v-once<span>></span>다시는 변경하지 않습니다 : {{ msg }} <span><</span>/span<span>></span>
+                    </code>
+                </div>
+                
+                <hr>
+                #원시 HTML<br>
+                이중 중괄호는 HTML이 아닌 일반 텍스트로 데이터를 해석한다.<br>
+                실제 HTML을 출력하려면 v-html 디렉티브를 사용해야한다.
+                <div class="pre">
+                    <code>
+                        <span><</span>p<span>></span>Using mustaches: {{ rawHtml }}<span><</span>/p<span>></span><br>
+                        <span><</span>p<span>></span>Using v-html directive: <span><</span>span v-html:"rawHtml"<span>></span><span><</span>/p<span>></span>
+                    </code>
+                </div>
+                <div id="app-2">
+                    <p>Using mustaches : {{ rawHtml }}</p>
+                    <p>Using v-html directive : <span v-html="rawHtml"></span></p>
+                </div>
+                <br>
+                span의 내용은 rawHtml로 대체된다. 이때 데이터 바인딩은 무시된다.<br>
+                Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 v-html을 이용해 템플릿을 사용할수 없다.<br>
+                이와 달리 컴포넌트는 UI 재사용 및 구성을 위한 기본 단위로 사용하는 것을 추천<br>
+                
+                <hr>
+                #속성 <br>
+                Mustache는 HTML 속성에서 사용할수 없다. 대신 v-bind디렉티브를 사용할수있다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>div v-bind:id="dynamicId"<span>></span><span><</span>/div<span>></span>
+                    </code>
+                </div>
+                boolean 속성을 사용할 때 단순히 true 인 경우 v-bind는 조금 다르게 작동합니다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>button v-bind:disabed="isButtonDisabled"<span>></span>Button<span><</span>/button<span>></span>
+                    </code>
+                </div>
+                isButtonDisabled가 null, undefined 또는 false의 값을 가지면 disabled 속성은 렌더링된 button엘리먼트에 포함되지 않는다.
+
+                <hr>
+                #JavaScript 표현식 사용<br>
+                지금까지 템플릿의 간단한 속성 키에만 바인딩했다. 그러나 실제로 Vue.js는 모든 데이터 바인딩내에서 js 표현식의 모든 기능을 지원했다.<br>
+                <div class="pre">
+                    <code>
+                        <div>{{ number + 1 }}</div>
+                        <div>{{ ok ? 'YES' : 'NO' }}</div>
+                        <div>{{ message.split('').reverse().join('') }}</div>
+                        <span><</span>div v-bind:id="'list-' + id"<span>></span><span><</span>/div<span>></span>
+                    </code>
+                </div>
+                이 표현식은 Vue 인스턴스 데이터 범위 내에서 JS로만 계산된다. 한가지 제한 사항은 각 바인딩에 하나의 단일 표현식만 포함될 수 있으므로<br>
+                아래처럼 작성하면 안된다.<br>
+
             </div>
             
-            <hr>
-            #원시 HTML<br>
-            이중 중괄호는 HTML이 아닌 일반 텍스트로 데이터를 해석한다.<br>
-            실제 HTML을 출력하려면 v-html 디렉티브를 사용해야한다.
-            <div class="pre">
-                <code>
-                    <span><</span>p<span>></span>Using mustaches: {{ rawHtml }}<span><</span>/p<span>></span><br>
-                    <span><</span>p<span>></span>Using v-html directive: <span><</span>span v-html:"rawHtml"<span>></span><span><</span>/p<span>></span>
-                </code>
+        </div>
+
+        <!-- 3 -->
+        <div class="box_form">
+            <div class="box_title">
+                Title : Third<br>
+                &lt; 디렉티브 &gt; <br>
             </div>
-            <div id="app-2">
-                <p>Using mustaches : {{ rawHtml }}</p>
-                <p>Using v-html directive : <span v-html="rawHtml"></span></p>
+            <div class="box_explain">
+                디렉티브는 v- 접두사가 있는 특수 속성이다.<br>
+                디렉티브 속성 값은 단일 JS표현식이 된다(v-for은 예외)<br>
+                디렉티브의 역할은 표현식의 값이 변경될 때 사이드 이펙트를 반응적으로 DOM에 적용하는 것이다.
+            </div>    
+            <div id="app-3">
+                <p v-if="seen">
+                이제 볼수있다.  
+                </p>
             </div>
-            <br>
-            span의 내용은 rawHtml로 대체된다. 이때 데이터 바인딩은 무시된다.<br>
-            Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 v-html을 이용해 템플릿을 사용할수 없다.<br>
-            이와 달리 컴포넌트는 UI 재사용 및 구성을 위한 기본 단위로 사용하는 것을 추천<br>
+        </div>
+
+        <!-- 4 -->
+        <div class="box_form">
+            <div class="box_title">
+                Title : Fourth<br>
+                &lt; 디렉티브 - 전달 인자 &gt; <br>
+            </div>
+            <div class="box_explain">
+                일부 디렉티브는 콜론으로 표시되는 "전달인자"를 사용할 수 있다.<br>
+                예를 들어, v-bind 디렉티브는 반응적으로 HTML속성을 갱신하는데 사용된다.
+            </div>
             
-            <hr>
-            #속성 <br>
-            Mustache는 HTML 속성에서 사용할수 없다. 대신 v-bind디렉티브를 사용할수있다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>div v-bind:id="dynamicId"<span>></span><span><</span>/div<span>></span>
-                </code>
+            <div id="app-4">
             </div>
-            boolean 속성을 사용할 때 단순히 true 인 경우 v-bind는 조금 다르게 작동합니다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>button v-bind:disabed="isButtonDisabled"<span>></span>Button<span><</span>/button<span>></span>
-                </code>
+        </div>
+        <!-- 5 -->
+        <div class="box_form">
+            <div class="box_title">
+                Title : Fifth<br>
+                &lt; 디렉티브 - 동적 전달인자 &gt; <br>
             </div>
-            isButtonDisabled가 null, undefined 또는 false의 값을 가지면 disabled 속성은 렌더링된 button엘리먼트에 포함되지 않는다.
+            <div class="box_explain">
+                JS표현식을 대괄호로 묶어서 디렉티브의 argument(전달인자로써 내가 입력한 값을 뜻한다 예)function("abc","def") 여기에서의<br>
+                abc와 def를 argument(아규먼트)라고 칭한다.)로 사용하는 것도 가능하다.<br>
+            </div>
+            <div class="app-5">
+                <div class="pre">
+                    <code>
+                        <span><</span>a v-bind : [attributeName]="url"<span>></span><span><</span>/a<span>></span><br>
+                    </code>
+                </div>
+                여기서 attributeName는 JS형식으로 동적으로 변환되어, 그 변환결과가 전달인자의 최종적인 Value로 사용된다.<br>
+                내가 인스턴스에 href라는 값을 가진 attributeName 데이터 속성을 가진 경우, 위 바인딩에서는 v-bind:href와 같은 표기가 된다.<br><br>
+                이와 유사하게, 동적인 이벤트명에 핸들러를 바인딩할 때 동적 전달 인자를 사용할 수 있다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>a v-on:[eventName]="doSomething"<span>></span><span><</span>/a<span>></span><br>
+                    </code>
+                </div>
+                위 예시에서 eventName의 값이 focus라고 한다면 v-on:[EventName]은 v-on:focus와 동등하다라는 뜻이다.<br><br>
+                
+                #동적 전달인자 값의 제약<br>
+                동적 전달인자는, null을 제외하고는 string으로 변환될 것으로 예상된다.<br>
+                특수 값인 null은 명시적으로 바인딩을 제거하는데 사용된다.<br>
+                그 외의 경우, string이 아닌 값은 경고를 출력한다.<br><br>
 
-            <hr>
-            #JavaScript 표현식 사용<br>
-            지금까지 템플릿의 간단한 속성 키에만 바인딩했다. 그러나 실제로 Vue.js는 모든 데이터 바인딩내에서 js 표현식의 모든 기능을 지원했다.<br>
-            <div class="pre">
-                <code>
-                    <div>{{ number + 1 }}</div>
-                    <div>{{ ok ? 'YES' : 'NO' }}</div>
-                    <div>{{ message.split('').reverse().join('') }}</div>
-                    <span><</span>div v-bind:id="'list-' + id"<span>></span><span><</span>/div<span>></span>
-                </code>
-            </div>
-            이 표현식은 Vue 인스턴스 데이터 범위 내에서 JS로만 계산된다. 한가지 제한 사항은 각 바인딩에 하나의 단일 표현식만 포함될 수 있으므로<br>
-            아래처럼 작성하면 안된다.<br>
+                #동적 전달인자 형식의 제약<br>
+                동적 전달인자의 형식에는 <u>문자상</u>의 제약이 있다.<br>
+                스페이스와 따옴표같은 몇몇 문자는 HTML의 속성명으로서 적합하지 않은 문자이기 때문이다. 다음은 예시에서<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>a v-bind:['foo' + bar] = 'value'<span>></span><span><</span>/a<span>></span><br>
+                    </code>
+                </div>
+                위와 같이 작성하면 컴파일러 경고가 뜬다.<br>
+                이를 피하는 방법은, 스페이스나 따옴표를 포함하지 않는 형식을 사용하거나, 복잡한 표현식을 계산된 속성으로 대체<br><br>
+                in-DOM 탬플릿을 사용할 때에는 (탬플릿이 HTML파일에 직접 쓰여진경우), 브라우저가 모든 속성명을 소문자로 만드는 관계로 대문자의<br>
+                사용을 피하는 것이 좋다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>a v-bind:[someAttr]="value"<span>></span><span><</span>/a<span>></span><br><br>
+                    </code>
+                </div>
 
-        </div>
-        
-    </div>
-
-    <!-- 3 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : Third<br>
-            &lt; 디렉티브 &gt; <br>
-        </div>
-        <div class="box_explain">
-            디렉티브는 v- 접두사가 있는 특수 속성이다.<br>
-            디렉티브 속성 값은 단일 JS표현식이 된다(v-for은 예외)<br>
-            디렉티브의 역할은 표현식의 값이 변경될 때 사이드 이펙트를 반응적으로 DOM에 적용하는 것이다.
-        </div>    
-        <div id="app-3">
-            <p v-if="seen">
-              이제 볼수있다.  
-            </p>
-        </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : Fourth<br>
-            &lt; 디렉티브 - 전달 인자 &gt; <br>
-        </div>
-        <div class="box_explain">
-            일부 디렉티브는 콜론으로 표시되는 "전달인자"를 사용할 수 있다.<br>
-            예를 들어, v-bind 디렉티브는 반응적으로 HTML속성을 갱신하는데 사용된다.
-        </div>
-        
-        <div id="app-4">
-        </div>
-    </div>
-    <!-- 5 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : Fifth<br>
-            &lt; 디렉티브 - 동적 전달인자 &gt; <br>
-        </div>
-        <div class="box_explain">
-            JS표현식을 대괄호로 묶어서 디렉티브의 argument(전달인자로써 내가 입력한 값을 뜻한다 예)function("abc","def") 여기에서의<br>
-            abc와 def를 argument(아규먼트)라고 칭한다.)로 사용하는 것도 가능하다.<br>
-        </div>
-        <div class="app-5">
-            <div class="pre">
-                <code>
-                    <span><</span>a v-bind : [attributeName]="url"<span>></span><span><</span>/a<span>></span><br>
-                </code>
-            </div>
-            여기서 attributeName는 JS형식으로 동적으로 변환되어, 그 변환결과가 전달인자의 최종적인 Value로 사용된다.<br>
-            내가 인스턴스에 href라는 값을 가진 attributeName 데이터 속성을 가진 경우, 위 바인딩에서는 v-bind:href와 같은 표기가 된다.<br><br>
-            이와 유사하게, 동적인 이벤트명에 핸들러를 바인딩할 때 동적 전달 인자를 사용할 수 있다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>a v-on:[eventName]="doSomething"<span>></span><span><</span>/a<span>></span><br>
-                </code>
-            </div>
-            위 예시에서 eventName의 값이 focus라고 한다면 v-on:[EventName]은 v-on:focus와 동등하다라는 뜻이다.<br><br>
-            
-            #동적 전달인자 값의 제약<br>
-            동적 전달인자는, null을 제외하고는 string으로 변환될 것으로 예상된다.<br>
-            특수 값인 null은 명시적으로 바인딩을 제거하는데 사용된다.<br>
-            그 외의 경우, string이 아닌 값은 경고를 출력한다.<br><br>
-
-            #동적 전달인자 형식의 제약<br>
-            동적 전달인자의 형식에는 <u>문자상</u>의 제약이 있다.<br>
-            스페이스와 따옴표같은 몇몇 문자는 HTML의 속성명으로서 적합하지 않은 문자이기 때문이다. 다음은 예시에서<br>
-            <div class="pre">
-                <code>
-                    <span><</span>a v-bind:['foo' + bar] = 'value'<span>></span><span><</span>/a<span>></span><br>
-                </code>
-            </div>
-            위와 같이 작성하면 컴파일러 경고가 뜬다.<br>
-            이를 피하는 방법은, 스페이스나 따옴표를 포함하지 않는 형식을 사용하거나, 복잡한 표현식을 계산된 속성으로 대체<br><br>
-            in-DOM 탬플릿을 사용할 때에는 (탬플릿이 HTML파일에 직접 쓰여진경우), 브라우저가 모든 속성명을 소문자로 만드는 관계로 대문자의<br>
-            사용을 피하는 것이 좋다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>a v-bind:[someAttr]="value"<span>></span><span><</span>/a<span>></span><br><br>
-                </code>
-            </div>
-
-            #수식어 <br>
-            수식어는 점으로 표시되는 특수 접미사로, 디렉티브를 특별한 방법으로 바인딩해야함을 나타낸다.<br>
-            예를 들어, .prevent 수식어는 트리거된 이벤트에서 event.preventDefault()를 호출하도록 v-on 디렉티브에 알려준다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>form v-on:submit.prevent="onSubmit"<span>></span><span><</span>/form<span>></span><br><br>
-                </code>
+                #수식어 <br>
+                수식어는 점으로 표시되는 특수 접미사로, 디렉티브를 특별한 방법으로 바인딩해야함을 나타낸다.<br>
+                예를 들어, .prevent 수식어는 트리거된 이벤트에서 event.preventDefault()를 호출하도록 v-on 디렉티브에 알려준다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>form v-on:submit.prevent="onSubmit"<span>></span><span><</span>/form<span>></span><br><br>
+                    </code>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- 6 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : Fifth<br>
-            &lt; 약어 &gt; <br>
-        </div>
-        <div class="box_explain">
-            v- 접두사는 템플릿의 Vue 특정 속성을 식별하기 위한 시각적 신호 역할을 한다.<br>
-            이 기능은 Vue.js를 사용하여 기존의 마크업에 동적인 동작을 적용할 때 유용하지만 일부 자주 사용되는 디렉티브에<br>
-            대해 너무 장황하다고 느껴질 수 있다.<br>
-            동시에 Vue.js가 모든 템플릿을 관리하는 SPA를 만들 때 v- 접두어의 필요성이 떨어진다.<br>
-            따라서 가장 자주 사용되는 두개의 디렉티브인 v-bind와 v-on에 대해 특별한 약어를 제공한다.
-        </div>
-        <div class="app-6">
-            
-            <div class="pre">
-                <code>
-                    <span># v-bind 약어</span><br>
-                    <span>전체 문법</span><br>
-                    <span><</span>a v-bind:href="url"<span>></span><span><</span>/a<span>></span><br><br>
-                    <span>약어</span><br>
-                    <span><</span>a :href="url"<span>></span><span><</span>/a<span>></span><br><br>
-                    <span>shorthand with dynamic argument (ver_2.6.0+)</span><br>
-                    <span><</span>a :[key]="url"<span>></span><span><</span>/a<span>></span><br><br>
+        <!-- 6 -->
+        <div class="box_form">
+            <div class="box_title">
+                Title : Fifth<br>
+                &lt; 약어 &gt; <br>
+            </div>
+            <div class="box_explain">
+                v- 접두사는 템플릿의 Vue 특정 속성을 식별하기 위한 시각적 신호 역할을 한다.<br>
+                이 기능은 Vue.js를 사용하여 기존의 마크업에 동적인 동작을 적용할 때 유용하지만 일부 자주 사용되는 디렉티브에<br>
+                대해 너무 장황하다고 느껴질 수 있다.<br>
+                동시에 Vue.js가 모든 템플릿을 관리하는 SPA를 만들 때 v- 접두어의 필요성이 떨어진다.<br>
+                따라서 가장 자주 사용되는 두개의 디렉티브인 v-bind와 v-on에 대해 특별한 약어를 제공한다.
+            </div>
+            <div class="app-6">
+                
+                <div class="pre">
+                    <code>
+                        <span># v-bind 약어</span><br>
+                        <span>전체 문법</span><br>
+                        <span><</span>a v-bind:href="url"<span>></span><span><</span>/a<span>></span><br><br>
+                        <span>약어</span><br>
+                        <span><</span>a :href="url"<span>></span><span><</span>/a<span>></span><br><br>
+                        <span>shorthand with dynamic argument (ver_2.6.0+)</span><br>
+                        <span><</span>a :[key]="url"<span>></span><span><</span>/a<span>></span><br><br>
 
-                    <span># v-bind 약어</span><br>
-                    <span>전체 문법</span><br>
-                    <span><</span>a v-on:click="doSomething"<span>></span><span><</span>/a<span>></span><br><br>
-                    <span>약어</span><br>
-                    <span><</span>a @click="doSomething"<span>></span><span><</span>/a<span>></span><br><br>
-                    <span>shorthand with dynamic argument (ver_2.6.0+)</span><br>
-                    <span><</span>a @[event]="doSomething"<span>></span><span><</span>/a<span>></span><br><br>
-                </code>        
+                        <span># v-bind 약어</span><br>
+                        <span>전체 문법</span><br>
+                        <span><</span>a v-on:click="doSomething"<span>></span><span><</span>/a<span>></span><br><br>
+                        <span>약어</span><br>
+                        <span><</span>a @click="doSomething"<span>></span><span><</span>/a<span>></span><br><br>
+                        <span>shorthand with dynamic argument (ver_2.6.0+)</span><br>
+                        <span><</span>a @[event]="doSomething"<span>></span><span><</span>/a<span>></span><br><br>
+                    </code>        
+                </div>
+            </div>
+            <div class="box_explain">
+                위 내용은 일반적인 HTML과는 조금 다르게 보일수 있다.<br>
+                하지만 : 과 @는 속성 이름에 유효한 문자이며 Vue.js를 지원하는 모든 브라우저는 올바르게 구문 분석이 가능<br>
+                약어, 즉 줄임말은 알기 쉽게 설명하자면<br>
+                v-on:click -> @click<br>
+                v-bind:class -> :class 가 된다.<br>
+                상기 두가지만 적용되니 알아두자
             </div>
         </div>
-        <div class="box_explain">
-            위 내용은 일반적인 HTML과는 조금 다르게 보일수 있다.<br>
-            하지만 : 과 @는 속성 이름에 유효한 문자이며 Vue.js를 지원하는 모든 브라우저는 올바르게 구문 분석이 가능<br>
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index2.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index4.html">
+                    NEXT　⇨
+                </a>
+            </div>
         </div>
     </div>
     <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
-    <script src="js/3_js.js"></script>    
+    <script src="js/3_js.js"></script>
+    <script src="./js/common.js"></script>
 </body>
 </html>

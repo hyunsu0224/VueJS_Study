@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5번째</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/1_css.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper_">
+        <!-- 1 -->
+        <div class="page_ttl_">
+            <h2>
+                다섯번째 Study
+            </h2>
+        </div>
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#Class & Binding</a>
+                </li>
+                <li>
+                    <a href="#second_">#watch</a>
+                </li>
+                <li>
+                    <a href="#third_">#v-if</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box_explain">
+            데이터 바인딩은 element의 class list와 inline-style을 조작하기 위해 일반적으로 사용<br>
+            이 두 속성은 v-bind를 사용하여 처리할 수 있다.<br>
+            우리는 표현식으로 최종 문자열을 계산하면 된다.<br>
+            그러나 문자열 연결에 간섭하는 것은 오류가 발생하기 쉽다.<br>
+            이러한 이유로, Vue는 class와 style에 v-bind를 사용할 때 특별히 향상된 기능을 제공한다.<br>
+            표현식은 문자열 이외에 객체 또는 배열을 이용할 수 있다.
+        </div>
+        <div class="box_form" id="first_">
+            <div class="box_title">
+                Title : First<br>
+                &lt; HTML 클래스 바인딩하기 &gt; <br>
+            </div>
+            <div class="box_explain">
+                #객체 구문 <br>
+                클래스를 동적으로 토글하기 위해 v-bind : class에 객체를 전달할 수 있다.<br>
+                
+                <div id="example1">
+                    <div class="pre">
+                        <div class="static" v-bind:class="{active : isActive, 'text-danger' : hasError}">you see</div>
+                    </div>
+                </div>
+                
+                이 두 속성은 v-bind를 사용하여 처리할 수 있다.<br>
+                우리는 표현식으로 최종 문자열을 계산하면 된다.<br>
+                그러나 문자열 연결에 간섭하는 것은 오류가 발생하기 쉽다.<br>
+                이러한 이유로, Vue는 class와 style에 v-bind를 사용할 때 특별히 향상된 기능을 제공한다.<br>
+                표현식은 문자열 이외에 객체 또는 배열을 이용할 수 있다.
+                
+                <div class="pre">
+                    <code>
+
+                    </code>
+                </div>
+            </div>
+        </div>
+
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index4.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index6.html">
+                    NEXT　⇨
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
+    <script src="js/5_js.js"></script>
+    <script src="./js/common.js"></script>
+    
+</body>
+</html>

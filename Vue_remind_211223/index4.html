@@ -6,184 +6,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4번째</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/1_css.css">
 
     <title>Document</title>
 </head>
 <body>
-    <!-- 1 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : First<br>
-            &lt; computed와 watch &gt; <br>
+    <div id="wrapper_">
+        <!-- 1 -->
+        <div class="page_ttl_">
+            <h2>
+                네번째 Study
+            </h2>
         </div>
-        <div class="box_explain">
-            템플릿 내에 표현식을 넣으면 편리하다<br>
-            하지만 간단한 연산일 때만 이용하는 것이 좋은데, 그 이유는 유지보수가 어렵기 때문이다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>div id="example"<span>></span>{{ message.split('').reerse().join('')}}<span><</span>/div<span>></span>
-                </code>
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#Computed & watch</a>
+                </li>
+                <li>
+                    <a href="#second_">#watch</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box_form" id="first_">
+            <div class="box_title">
+                Title : First<br>
+                &lt; computed와 watch &gt; <br>
             </div>
-            이 템플릿은 더이산 간단명료하지 않다.<br>
-            message를 역순으로 표시한다는 것을 알려면 코드를 다 봐야하고, 템플릿에 미시지를 역순으로 표시할 일 이 생기면 문제는 커진다.<br>
-            따라서 복잡한 로직의 경우 computed를 사용해야하는 이유이다.<br><br>
+            <div class="box_explain">
+                템플릿 내에 표현식을 넣으면 편리하다<br>
+                하지만 간단한 연산일 때만 이용하는 것이 좋은데, 그 이유는 유지보수가 어렵기 때문이다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>div id="example"<span>></span>{{ message.split('').reerse().join('')}}<span><</span>/div<span>></span>
+                    </code>
+                </div>
+                이 템플릿은 더이산 간단명료하지 않다.<br>
+                message를 역순으로 표시한다는 것을 알려면 코드를 다 봐야하고, 템플릿에 미시지를 역순으로 표시할 일 이 생기면 문제는 커진다.<br>
+                따라서 복잡한 로직의 경우 computed를 사용해야하는 이유이다.<br><br>
 
-            #기본 예제
-            <div class="pre">
-                <code>
-                    <span><</span>div id="example"<span>></span><br>
-                    　<span><</span>p<span>>원본 메시지:"{{message}}"</span>
-                    <span><</span>/p<span><span>></span><br>
-                    　<span><</span>p<span>>역순으로 표시한 메시지:"{{reversedMessage}}"</span>
-                    <span><</span>/p<span><span>></span><br>
-                    <span><</span>/div<span>></span><br><br>
+                #기본 예제
+                <div class="pre">
+                    <code>
+                        <span><</span>div id="example"<span>></span><br>
+                        　<span><</span>p<span>>원본 메시지:"{{message}}"</span>
+                        <span><</span>/p<span><span>></span><br>
+                        　<span><</span>p<span>>역순으로 표시한 메시지:"{{reversedMessage}}"</span>
+                        <span><</span>/p<span><span>></span><br>
+                        <span><</span>/div<span>></span><br><br>
 
-                    var vm = new Vue({<br>
-                    　　el : "#example",<br>
-                    　　data : {<br>
-                    　　　　message : "안녕하세요"<br>
-                    　　},<br>
-                    　　computed : {<br>
-                    　　　　//계산된 getter<br>
-                    　　　　reversedMessage : function(){<br>
-                    　　　　　　// 'this'는 vm 인스턴스를 가리킨다..<br>
-                    　　　　　　return this.message.split('').reverse().join('');<br>
-                    　　　　}<br>
-                    　　}<br>
-                    })
-                    
-                </code>
+                        var vm = new Vue({<br>
+                        　　el : "#example",<br>
+                        　　data : {<br>
+                        　　　　message : "안녕하세요"<br>
+                        　　},<br>
+                        　　computed : {<br>
+                        　　　　//계산된 getter<br>
+                        　　　　reversedMessage : function(){<br>
+                        　　　　　　// 'this'는 vm 인스턴스를 가리킨다..<br>
+                        　　　　　　return this.message.split('').reverse().join('');<br>
+                        　　　　}<br>
+                        　　}<br>
+                        })
+                        
+                    </code>
+                </div>
+                <div class="pre">
+                    <div id="example">
+                        #결과
+                        <p>원본 메시지 : "{{message}}" </p>
+                        <p>역순으로 표시한 메시지 : "{{reversedMessage}}"</p>
+                    </div>
+                </div>
+                #computed 속성의 캐싱 vs 메소드<br>
+                표현식에서 메소드를 호출하여 같은 결과를 얻을 수도 있다.<br>
+                <div class="pre">
+                    <code>
+                        <span><</span>p<span><span>>역순으로 표시한 메시지:"{{reversedMessage}}"</span>
+                        <span><</span>/p<span>></span>
+                    </code>
+                </div>
+
+                # 컴포넌트 내부에 지정한 메소드
+                <div class="pre">
+                    <div id="example2">
+                        <p>원본 메시지 : "{{message}}" </p>
+                        <p>뒤집힌 메시지 : "{{reversedMessage()}}"</p>
+                    </div>
+                </div><br>
+                computed 속성 대신 methods와 같은 함수를 정의할 수도 있다.<br>
+                접근 방식은 둘다 동일하지만, 차이점은 computed 속성은 종속 대상을 따라 저장된다는것 <br>
+                computed속성은 해당 속성이 종속된 대상이 변경될 때만 함수를 실행한다.<br>
+                즉, message가 변경되지 않는 한, computed 속성인 reversedMessage를 여러번 요청해도 변경X<br><br>
+                또한, Date.now()처럼 아무 곳에도 의존하지 않는 computed 속성의 경우 절대로 업데이트 되지않는다.<br>
+
+                <div class="pre">
+                    <code>
+                        computed : {<br>
+                        　　now : function(){<br>
+                        　　　　return Date.now()<br>
+                        　　}<br>
+                        }<br>
+                    </code>
+                    <br>
+                    <br>
+                    <div id="example3">
+                        <p>원본 메시지 : "{{message}}"</p>
+                        <p>뒤집기 : "{{message}}"</p>
+                    </div>
+                </div>
+
+                # computed 속성 VS watch 속성(js파일의 first_4-title 참고)<br>
+                Vue는 Vue 인스턴스의 데이터 변경을 관찰하고 이ㅔㅇ 반응하는 보다 일반적인 watch 속성을 제공<br>
+                다른 데이터 기반으로 변경할 필요가 있는 데이터가 있는 경우, Angular JS를 사용하던 경우 watch를 남용하는 경우가 많다.<br>
+                computed 속성은 계산해야 하는 목표 데이터를 정의하는 방식으로 소프트웨어 공학에서 이야기하는 '선언형 프로그래밍'방식이다.<br>
+                <div class="pre">
+                    <div id="example4">
+                        {{ fullName }}
+                    </div>
+                    <div id="example5">
+                        {{ fullName }}
+                    </div>
+                </div>
+                아래 코드는 computed 속성의 코드고 위는 watch 속성의 코드인데 computed 속성의 코드가 비교적 짧기때문에 <br>
+                효율성이 있는 코드라고 느껴진다.<br><br>
+
+                #computed 속성의 setter 함수<br>
+                computed 속성은 기본적으로 getter 함수만 가지고 있지만, 필요한 경우 setter 함수를 만들어 쓸수있다.<br>
+                <div class="pre">
+                    <div id="example6">
+                        {{ firstName }}<br>
+                        {{ lastName }}<br>
+                        {{ fullName }}
+                    </div>
+                </div>
+                이제 여기에서 콘솔창에 vm6.fullName을 업데이트하는 경우 상기의 내용이 업데이트된다.<br>
+                정확하게는 vm6.firstName과 vm6.lastName이 업데이트 된다.
             </div>
-            <div class="pre">
-                <div id="example">
-                    #결과
-                    <p>원본 메시지 : "{{message}}" </p>
-                    <p>역순으로 표시한 메시지 : "{{reversedMessage}}"</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="box_form" id="second_">
+            <div class="box_title">
+                Title : Second<br>
+                &lt; watch속성 &gt;
+            </div>
+            <div class="box_explain">
+                대부분의 경우 computed 속성이 더 적합하지만 사용자가 만든 감시자가 필요한 경우도 있다.</br>
+                그래서 Vue는 watch 옵션을 통해 데이터 변경에 반응하는 보다 일반적인 방법을 제공한다.<br>
+                이는 데이터 변경에 대한 응답으로 비동기식 또는 시간이 많이 소요되는 조작을 수행하는 경우 가장! 유용하다.
+                
+                <div class="pre">
+                    <div id="example7">
+                        <p>
+                            Yes / No 질문을 물어보세요 :
+                            <input v-model = "question">
+                        </p>
+                        <p>{{ answer }}</p>
+                    </div>
                 </div>
             </div>
-            #computed 속성의 캐싱 vs 메소드<br>
-            표현식에서 메소드를 호출하여 같은 결과를 얻을 수도 있다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>p<span><span>>역순으로 표시한 메시지:"{{reversedMessage}}"</span>
-                    <span><</span>/p<span>></span>
-                </code>
-            </div>
-
-            # 컴포넌트 내부에 지정한 메소드
-            <div class="pre">
-                <div id="example2">
-                    <p>원본 메시지 : "{{message}}" </p>
-                    <p>뒤집힌 메시지 : "{{reversedMessage()}}"</p>
-                </div>
-            </div><br>
-            computed 속성 대신 methods와 같은 함수를 정의할 수도 있다.<br>
-            접근 방식은 둘다 동일하지만, 차이점은 computed 속성은 종속 대상을 따라 저장된다는것 <br>
-            computed속성은 해당 속성이 종속된 대상이 변경될 때만 함수를 실행한다.<br>
-            즉, message가 변경되지 않는 한, computed 속성인 reversedMessage를 여러번 요청해도 변경X<br><br>
-            또한, Date.now()처럼 아무 곳에도 의존하지 않는 computed 속성의 경우 절대로 업데이트 되지않는다.<br>
-
-            <div class="pre">
-                <code>
-                    computed : {<br>
-                    　　now : function(){<br>
-                    　　　　return Date.now()<br>
-                    　　}<br>
-                    }<br>
-                </code>
-                <br>
-                <br>
-                <div id="example3">
-                    <p>원본 메시지 : "{{message}}"</p>
-                    <p>뒤집기 : "{{message}}"</p>
-                </div>
-            </div>
-            
+            이 경우 watch 옵션을 사용하면 비동기 연산 (API 엑세스)를 수행하고, 우리가 그 연산을 얼마나 자주 수행하는지 제한하고,<br>
+            최종 응답을 얻을 때까지 중간 상태를 설정할 수 있다.<br>
+            계산된 속성은 이러한 기능을 수행할 수 없다.<br>
+            watch 옵션 외에도 명령형 vm.$watch API를 사용할 수도 있다.
         </div>
-    </div>
 
-    <!-- 2 -->
-    <div class="box_form">
-        <div class="box_title">
-            Title : Second<br>
-            &lt; 보간법 &gt; <br>
-            &lt; Interpolation &gt; <br>
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index3.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index5.html">
+                    NEXT　⇨
+                </a>
+            </div>
         </div>
-        <div class="box_explain">
-            #문자열<br>
-            데이터 바인딩의 가장 기본 형태는 "Mustache"구문(이중 중괄호)을 사용한 텍스트 보간이다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>span<span>></span>메시지 : {{ msg }} <span><</span>/span<span>></span>
-                </code>
-            </div>
-            Mustache 태그는 해당 데이터 객체의 「msg」속성 값으로 대체됩니다. 또한 데이터 객체의 「msg」속성이 변경될 때마다 갱신됩니다.<br>
-            v-once 디렉티브를 사용하여 데이터 변경 시 업데이트 되지 않는 일회성 보간을 수행할 수 있지만, 같은 노드의 바인딩에도 영향을 미친다는 점
-            <div class="pre">
-                <code>
-                    <span><</span>span v-once<span>></span>다시는 변경하지 않습니다 : {{ msg }} <span><</span>/span<span>></span>
-                </code>
-            </div>
-            
-            <hr>
-            #원시 HTML<br>
-            이중 중괄호는 HTML이 아닌 일반 텍스트로 데이터를 해석한다.<br>
-            실제 HTML을 출력하려면 v-html 디렉티브를 사용해야한다.
-            <div class="pre">
-                <code>
-                    <span><</span>p<span>></span>Using mustaches: {{ rawHtml }}<span><</span>/p<span>></span><br>
-                    <span><</span>p<span>></span>Using v-html directive: <span><</span>span v-html:"rawHtml"<span>></span><span><</span>/p<span>></span>
-                </code>
-            </div>
-            <div id="app-2">
-                <p>Using mustaches : {{ rawHtml }}</p>
-                <p>Using v-html directive : <span v-html="rawHtml"></span></p>
-            </div>
-            <br>
-            span의 내용은 rawHtml로 대체된다. 이때 데이터 바인딩은 무시된다.<br>
-            Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 v-html을 이용해 템플릿을 사용할수 없다.<br>
-            이와 달리 컴포넌트는 UI 재사용 및 구성을 위한 기본 단위로 사용하는 것을 추천<br>
-            
-            <hr>
-            #속성 <br>
-            Mustache는 HTML 속성에서 사용할수 없다. 대신 v-bind디렉티브를 사용할수있다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>div v-bind:id="dynamicId"<span>></span><span><</span>/div<span>></span>
-                </code>
-            </div>
-            boolean 속성을 사용할 때 단순히 true 인 경우 v-bind는 조금 다르게 작동합니다.<br>
-            <div class="pre">
-                <code>
-                    <span><</span>button v-bind:disabed="isButtonDisabled"<span>></span>Button<span><</span>/button<span>></span>
-                </code>
-            </div>
-            isButtonDisabled가 null, undefined 또는 false의 값을 가지면 disabled 속성은 렌더링된 button엘리먼트에 포함되지 않는다.
-
-            <hr>
-            #JavaScript 표현식 사용<br>
-            지금까지 템플릿의 간단한 속성 키에만 바인딩했다. 그러나 실제로 Vue.js는 모든 데이터 바인딩내에서 js 표현식의 모든 기능을 지원했다.<br>
-            <div class="pre">
-                <code>
-                    <div>{{ number + 1 }}</div>
-                    <div>{{ ok ? 'YES' : 'NO' }}</div>
-                    <div>{{ message.split('').reverse().join('') }}</div>
-                    <span><</span>div v-bind:id="'list-' + id"<span>></span><span><</span>/div<span>></span>
-                </code>
-            </div>
-            이 표현식은 Vue 인스턴스 데이터 범위 내에서 JS로만 계산된다. 한가지 제한 사항은 각 바인딩에 하나의 단일 표현식만 포함될 수 있으므로<br>
-            아래처럼 작성하면 안된다.<br>
-
-        </div>
-        
     </div>
 
     
     <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
-    <script src="js/4_js.js"></script>    
+    <script src="js/4_js.js"></script>
+    <script src="./js/common.js"></script>
+    
 </body>
 </html>
