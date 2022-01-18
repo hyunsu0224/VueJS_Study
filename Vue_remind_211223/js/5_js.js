@@ -6,3 +6,13 @@ var vm1 = new Vue({
         hasError : false
     }
 })
+
+var vm2 = new Vue({
+    el : "#example2",
+    data : {
+        classObject : {
+            isActive : true,
+            'text-danger' : false
+        }
+    }
+})

@@ -55,8 +55,16 @@
                 <div id="example1">
                     <div class="pre">
                         <div class="static" v-bind:class="{active : isActive, 'text-danger' : hasError}">you see</div>
+                        <div class="static active"></div>
+                        
                     </div>
                 </div>
+                <div id="example2">
+                    <div class="pre">
+                        <div v-bind:class="classObject"></div>
+                    </div>
+                </div>
+                
                 
                 이 두 속성은 v-bind를 사용하여 처리할 수 있다.<br>
                 우리는 표현식으로 최종 문자열을 계산하면 된다.<br>
