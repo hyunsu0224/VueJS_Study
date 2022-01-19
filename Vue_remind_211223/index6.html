@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6번째</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/1_css.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper_">
+        <!-- 1 -->
+        <div class="page_ttl_">
+            <h2>
+                여섯번째 Study<br>
+                조건부 렌더링
+            </h2>
+        </div>
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#v-if</a>
+                </li>
+                <li>
+                    <a href="#second_">#watch</a>
+                </li>
+                <li>
+                    <a href="#third_">#</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box_explain" style="margin : 0 auto; text-align: center;">
+            
+        </div>
+        <div class="box_form" id="first_">
+            <div class="box_title">
+                Title : First<br>
+                &lt; v-if &gt; <br>
+            </div>
+            <div class="box_explain">
+                v-if 디렉티브는 조건에 따라 블록을 렌더링할 때 사용한다.<br>
+                블록은 디렉티브의 표현식이 true 값을 반환할 때만 렌더링됩니다.
+                <div class="pre">
+                    <div id="example1">
+                        <h1 v-if="awesome">Vue is awesome!</h1>
+                        <h1 v-else>Oh no 😢</h1>
+                    </div>
+                    <hr>
+                    <div>
+                        js에 설정한 awesome의 boolean 값에 따라서 true이면 위값이 false이면 아래값이 출력된다.(지금은 false)
+                    </div>
+                    <hr>
+                </div>
+                <br>
+
+                <div><hr> template에 v-if를 갖는 조건부 그룹 만들기</div>
+                d-if는 디렉티브(directive)이기 때문에 하나의 엘리먼트에 추가되어야 한다.<br>
+                하지만 둘 이상의 element를 전환하려면 어떻게 해야할까? <br>
+                <span>이 경우 v-if를 <span><</span>template<span>></span> 엘리먼트에 감싸서 사용할 수 있다.</span>
+                template 요소는 눈에 보이지 않게 내부 요소를 감싸는 역할(invisible wrapper)을 하며, 종종 렌더링 결과에 포함되지 않는다.
+                <div class="pre">
+                    <div id="example2">
+                        <template v-if="ok">
+                            <h1>Title</h1>
+                            <p>paragraph 1</p>
+                            <p>paragraph 2</p>
+                        </template>
+                    </div>
+                </div>
+                <br>
+
+                <div><hr> v-else</div>
+                v-else 디렉티브를 사용하여 v-if에 대한 "else 블록"을 나타낼 수 있다.
+                <div class="pre">
+                    <div id="example3">
+                        <div v-if="Math.random() > 0.5">
+                            Now you see me
+                        </div>
+                        <div v-else>
+                            Now u don't
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div><hr> v-else-if</div>
+                v-else-if 디렉티브를 사용하여 v-if에 대한 "else if 블록"을 나타낼 수 있다. 여러번 사용도 가능
+                <div class="pre">
+                    <div id="example4">
+                        <div v-if="type === 'A'">
+                            A
+                        </div>
+                        <div v-else-if="type === 'B'">
+                            B
+                        </div>
+                        <div v-else-if="type === 'C'">
+                            C
+                        </div>
+                        <div v-else>
+                            Not A/B/C
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div><hr> v-show</div>
+                요소를 조건에 따라 표시하기 위한 또 다른 방법으로는 v-show 디렉티브가 있다. 방법은 비슷하다.
+                <div class="pre">
+                    <div id="example5">
+                        <h1 v-show="ok">v-show Hello!</h1>
+                    </div>
+                </div>
+                <br>
+
+                <div><hr> v-if VS v-show</div>
+                v-if는 "실제(real)" 조건부 렌더링이다.<br>
+                전환 도중 
+                <div class="pre">
+                    <div id="example5">
+                        <h1 v-show="ok">v-show Hello!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index5.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index7.html">
+                    NEXT　⇨
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
+    <script src="js/6_js.js"></script>
+    <script src="./js/common.js"></script>
+    
+</body>
+</html>

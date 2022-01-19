@@ -35,13 +35,14 @@
                 </li>
             </ul>
         </div>
-        <div class="box_explain">
+        <div class="box_explain" style="margin : 0 auto; text-align: center;">
             데이터 바인딩은 element의 class list와 inline-style을 조작하기 위해 일반적으로 사용<br>
             이 두 속성은 v-bind를 사용하여 처리할 수 있다.<br>
             우리는 표현식으로 최종 문자열을 계산하면 된다.<br>
             그러나 문자열 연결에 간섭하는 것은 오류가 발생하기 쉽다.<br>
             이러한 이유로, Vue는 class와 style에 v-bind를 사용할 때 특별히 향상된 기능을 제공한다.<br>
-            표현식은 문자열 이외에 객체 또는 배열을 이용할 수 있다.
+            표현식은 문자열 이외에 객체 또는 배열을 이용할 수 있다.<br>
+            v-bind는 jquery의 attr과 같은 느낌으로 v-bind:class면 class를 변경한다는 의미가 된다 js 내용으로
         </div>
         <div class="box_form" id="first_">
             <div class="box_title">
@@ -52,33 +53,146 @@
                 #객체 구문 <br>
                 클래스를 동적으로 토글하기 위해 v-bind : class에 객체를 전달할 수 있다.<br>
                 
-                <div id="example1">
-                    <div class="pre">
-                        <div class="static" v-bind:class="{active : isActive, 'text-danger' : hasError}">you see</div>
-                        <div class="static active"></div>
-                        
+
+                <div>
+                    active : isActive => active라는 class명을 isActive(사용한다)한다는 뜻<br>
+                    text-danger : hasError => text-danger라는 class명을 hasError결과에 대해 값을 반환한다 false이면 0을 true이면 1을 반환해서 값을 사용한다.
+                </div>
+                <div class="pre">
+                    <div id="example1">
+                        <div class="static" :class="{active : isActive, 'text-danger' : hasError}">example1</div>
+                        <hr>
+                        <div>위의 값은 기본 static class명과 active값을 true 반환 text-danger를 false로 반환해서 아래의 값과 같아진다.</div>
+                        <hr>
+                        <div class="static active">example1</div>
                     </div>
                 </div>
-                <div id="example2">
-                    <div class="pre">
-                        <div v-bind:class="classObject"></div>
-                    </div>
-                </div>
-                
-                
-                이 두 속성은 v-bind를 사용하여 처리할 수 있다.<br>
-                우리는 표현식으로 최종 문자열을 계산하면 된다.<br>
-                그러나 문자열 연결에 간섭하는 것은 오류가 발생하기 쉽다.<br>
-                이러한 이유로, Vue는 class와 style에 v-bind를 사용할 때 특별히 향상된 기능을 제공한다.<br>
-                표현식은 문자열 이외에 객체 또는 배열을 이용할 수 있다.
                 
                 <div class="pre">
-                    <code>
+                    <div id="example2">
+                        <div v-bind:class="classObject">example2</div>
+                        <hr>
+                        <div>
+                            위의 값은 v-bind를 class에 사용하여 js로 클래스명을 setting한 것으로, data값에 classObject를 지정한뒤<br>
+                            isActive는 true, text-danger : false로 지정하면<br>
+                            아래의 값과 같아진다.
+                        </div>
+                        <hr>
+                        <div class="isActive">example2</div>
+                        <hr>
+                        <div>
+                            아래처럼 class에 static 값을 지정한 뒤 v-bind를 이용해서 class를 지정해주면 2개의 class값이 같이 등록된것처럼 보여진다.
+                        </div>
+                        <hr>
+                        <div v-bind:class="classObject" class="static">example2-1</div>
+                    </div>
+                </div>
+                <div class="pre">
+                    <div id="example3">
+                        <div :class="classObject">example3</div>
+                        <hr>
+                        <div>
+                            위 값은 v-bind:를 누락시키고 :만을 이용한 구문으로 <br>
+                            이미 바인딩이 된 객체는 인라인일 필요가 없다<br>
+                            js에 작성하는 방법이 약간 다른 점을 참고해두자.
+                        </div>
+                    </div>
+                </div>
+                <div class="pre">
+                    <div id="example4">
+                        <div :class="classObject">example4</div>
+                        <hr>
+                        <div>
+                            위 내용은 객체를 반환하는 computed property에 바인딩을 하는 방식이다.
+                            <a href="https://v3.ko.vuejs.org/guide/computed.html">https://v3.ko.vuejs.org/guide/computed.html</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                
+                <div><hr>#배열 구문</div>
+                배열을 :class 에 전달하여 클래스 목록을 적용할 수 있다.<br>
 
-                    </code>
+                <div class="pre">
+                    <div id="example5">
+                        <div :class="[activeClass, errorClass, testClass]">example5</div>
+                    </div>
+                    <hr>
+                    <div>
+                        위 값을 렌더링 하면 js에 지정한 배열 순서에 맞춰서 class값이 변경되고 값이 들어 있지 않는 경우 아무것도 들어가지 않는다.
+                    </div>
+                    <hr>
+                    <div class="active text-danger">example5</div>
+                </div>
+                <br>
+                다음은 조건부로 목록의 클래스를 전환하기 위해서는 삼항 표현식을 사용해서 만들 수 있다.
+                <div class="pre">
+                    <div id="example6">
+                        <div :class="[isActive ? activeClass : '', errorClass]">example6</div>
+                    </div>
+                    <hr>
+                    <div>
+                        위 값은 isActive의 boolean 값에 따라서 true인 경우 activeClass의 'active'클래스가 적용이되고, false인경우 ' '가 적용된다<br>
+                        errorClass의 값은 항상 적용된다.<br>
+                        만약 isActive의 값이 데이터에 없다면 오류가 발생해서 아무런 값도 출력되지 않는다.
+                    </div>
+                    <hr>
+                    <div id="example7">
+                        <div :class="[{active : isActive}, errorClass]">example6</div>
+                    </div>
+                    <hr>
+                    <div>
+                        위의 값은 배열 내에 active 객체의 존재 유무를 isActive의 boolean값으로 결정을 하는 것이므로<br>
+                        js에서 isActive를 설정해주어야 한다. errorClass는 전과 동일하게 진행된다.
+                    </div>
+                </div>
+                <br>
+
+                <div><hr>#컴포넌트에서 사용하기</div>
+                이 부분은 컴포넌트에 대한 기본 지식이 있어야 진행이 가능하므로 나중에 다시 돌아오자
+                
+            </div>
+        </div>
+        <div class="box_form" id="second_">
+            <div class="box_title">
+                Title : Second<br>
+                &lt; 인라인 스타일 바인딩하기 &gt; <br>
+            </div>
+            <div class="box_explain">
+                <div>#객체 구문</div>
+                <div>
+                    :style의 객체 구문은 JS객체라는 점을 제외하면 CSS와 거의 비슷하다.<br>
+                    css에서는 예를 들어 font-size 라고 표기하는 반면 JS에서는 <u>camelCase</u>를 사용해서 fontSize로 표기한다.
+                </div>
+                <div class="pre">
+                    <div id="example8">
+                        <div :style="{ color : activeColor, fontSize : fontSize + 'px'}">example8</div>
+                    </div>
+                    <hr>
+                    <div>
+                        위 내용을 조금더 깔끔하게 만들기 위해서는 스타일 객체에 직접 바인딩 하는 것이 깔끔하다.
+                    </div>
+                    <hr>
+                    <div id="example9">
+                        <div :style="styleObject">example9</div>
+                    </div>    
+                </div>
+                <div>
+                    다시 정리하자면 styleObject 얘가 객체 구문의 객체를 반환하는 computed 속성이다.<br>
+                    배열 구문을 사용해서 작성을 하면 동일한 요소에 여러 스타일 객체를 적용할 수 있다.
+                </div>
+                <div class="pre">
+                    <div id="example10">
+                        <div :style="[baseStyle, overridingStyle]">example10</div>
+                    </div>
+                    <hr>
+                    <div>
+                        한가지 추가하자면 적용시 뒤에 오는 computed가 우선 적용된다.
+                    </div>
                 </div>
             </div>
         </div>
+        
 
         <div class="page_move_">
             <div class="prev_page_">
