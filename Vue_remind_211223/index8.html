@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8번째</title>
+    <!-- 구 version vue -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+    <!-- 최신 version vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/1_css.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper_">
+        <!-- 1 -->
+        <div class="page_ttl_">
+            <h2>
+                여덟번째 Study<br>
+                이벤트 핸들링
+            </h2>
+        </div>
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#이벤트 청취</a>
+                </li>
+                <li>
+                    <a href="#second_">#v-for 객체</a>
+                </li>
+                <li>
+                    <a href="#third_">#상태 유지</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box_explain" style="margin : 0 auto; text-align: center;">
+            
+        </div>
+        <div class="box_form" id="first_">
+            <div class="box_title">
+                Title : First<br>
+                &lt; 이벤트 청취 &gt; <br>
+            </div>
+            <div class="box_explain">
+                v-on 디렉티브는 @ 기호로, DOM 이벤트를 듣고 트리거 될 때와 JS를 실행할 때 사용한다.<br>
+                v-on:click="methodName"를 줄여서 @click="methodName"로 사용한다.<br>
+                <div class="pre">
+                    <div id="basic-event">
+                        <button @click="counter += 1">Add 1</button>
+                        <p>The button above has been clicked {{ counter }} times</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_form" id="Second_">
+            <div class="box_title">
+                Title : Second<br>
+                &lt; 메소드 이벤트 핸들러 &gt; <br>
+            </div>
+            <div class="box_explain">
+                많은 이벤트 핸들러의 로직은 더 복잡하고, JS를 v-on 속성값으로 보관하는 것은 간단하지 않다.<br>
+                그래서 v-on이 호출하고자 하는 메소드의 이름을 지정하는 이유이다.<br>
+                <div class="pre">
+                    <div id="event-with-method">
+                        <!-- greet는 메소드 이름으로 아래에 정의된다.-->
+                        <button @click="greet">Greet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_form" id="Third_">
+            <div class="box_title">
+                Title : Third<br>
+                &lt; inline method handler &gt; <br>
+            </div>
+            <div class="box_explain">
+                메소드 이름을 직접 바인딩 하는 대신에, 인라인 JS 구문에 메소드를 사용할 수도 있다.<br>
+                그래서 v-on이 호출하고자 하는 메소드의 이름을 지정하는 이유이다.<br>
+                <div class="pre">
+                    <div id="inline-handler">
+                        <button @click="say('hi')"> Say Hi</button>
+                        <button @click="say('what')"> Say What</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index7.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index9.html">
+                    NEXT　⇨
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
+    <script src="js/8_js.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>

@@ -121,12 +121,16 @@
 
                 <div><hr> v-if VS v-show</div>
                 v-if는 "실제(real)" 조건부 렌더링이다.<br>
-                전환 도중 
-                <div class="pre">
-                    <div id="example5">
-                        <h1 v-show="ok">v-show Hello!</h1>
-                    </div>
-                </div>
+                전환 도중 조건부 블록 내부의 이벤트 리스너 및 자식 컴포넌트들이 올바르게 제거되고 다시 생성되기 떄문이다.<br>
+                또한 v-if는 lazy. 초기 렌더링 시, 조건이 false이면 아무 작업도 하지 않는다. 조건부가 true가 되기 전까지<br>
+                이에 비에 v-show는 요소가 CSS를 기반으로 하기때문에 일단 렌더링이 진행된다.<br>
+                일반적으로 v-if는 전환 비용이 높은 반면, v-show는 초기 렌더링 비용이 높다.<br>
+                그러므로 자주 전환하는 경우인 경우 v-show를 사용하고<br>
+                런타임시 조건이 변경되지 않는다면 v-if를 사용하는게 더 낫다.<br>
+                <br>
+
+                <div><hr> v-if VS v-for</div>
+                동일한 element에서 v-if 와 v-for을 함께 사용할 경우 v-if가 우선순위가 더 높다. 자세한 내용은 다음장
             </div>
         </div>
         

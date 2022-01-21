@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7번째</title>
+    <!-- 구 version vue -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+    <!-- 최신 version vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/1_css.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper_">
+        <!-- 1 -->
+        <div class="page_ttl_">
+            <h2>
+                일곱번째 Study<br>
+                리스트 렌더링
+            </h2>
+        </div>
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#v-for mapping</a>
+                </li>
+                <li>
+                    <a href="#second_">#v-for 객체</a>
+                </li>
+                <li>
+                    <a href="#third_">#상태 유지</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box_explain" style="margin : 0 auto; text-align: center;">
+            
+        </div>
+        <div class="box_form" id="first_">
+            <div class="box_title">
+                Title : First<br>
+                &lt; v-for로 엘리먼트에 배열 mapping하기 &gt; <br>
+            </div>
+            <div class="box_explain">
+                「v-for」 디렉티브(directive)를 사용하여 배열을 기반으로 리스트를 렌더링 할 수 있다.<br>
+                「v-for」 디렉티브는 「item in items」 형태로 특별한 문법이 필요하다. 여기서 「items」는 원본 데이터 배열이고 「item」은 반복되는 배열 요소의 별칭이다.<br>
+                <div class="pre">
+                    <div class="example1">
+                        <ul id="array-rendering" class="demo">
+                            <li v-for="item in items" :key="item.message">
+                              {{ item.message }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                「v-for」블록 안에는 부모 범이 속성에 대한 모든 권한이 있다.<br>
+                v-for는 또한 현재 항목의 인덱스에 대한 두번째 전달인자 옵션을 제공한다.
+                <div class="pre">
+                    <div class="example2">
+                        <ul id="array-with-index">
+                            <li v-for="(item, index) in items">
+                              {{ parentMessage }} - {{ index }} - {{ item.message }}
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div>
+                        index를 설정하고 js에 아무것도 지정하지 않아도 그냥 숫자가  순차적으로 나온다.
+                    </div>
+                </div>
+                <br>
+                <div>
+                    「in」 대신에 「of」를 구분자로도 사용할 수 있다.
+                </div>
+                <div>
+                    &lt;div v-for="item of items"&gt;&lt;/div&gt;
+                </div>
+            </div>
+        </div>
+
+        <div class="box_form" id="Second_">
+            <div class="box_title">
+                Title : Second<br>
+                &lt; v-for와 객체 &gt; <br>
+            </div>
+            <div class="box_explain">
+                「v-for」 를 사용하여 객체의 속성을 반복할 수 있다.
+                <div class="pre">
+                    <div class="example3">
+                        <ul id="v-for-object" class="demo">
+                            <li v-for="value in myObject">
+                              {{ value }}
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div>
+                        위의 내용을 통해 알수 있듯이 v-for="value in myObject" 를 이용해서 <br>
+                        myObject에 있는 객체 내의 속성들이 배열된다.
+                    </div>
+                    <hr>
+                    <div class="example4">
+                        <ul id="v-for-object2">
+                            <li v-for="(value, name) in myObject2">
+                                {{ name }} : {{ value }}
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div>
+                        배열 내의 키값과 같이 값이 출력된다.
+                    </div>
+                    <hr>
+                    <div class="example5">
+                        <ul id="v-for-object3">
+                            <li v-for="(value, name, index) in myObject3">
+                                {{ index }} : {{ name }} : {{ value }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_form" id="Third_">
+            <div class="box_title">
+                Title : Third<br>
+                &lt; 상태 유지 &gt; <br>
+            </div>
+            <div class="box_explain">
+                Vue가 v-for 에서 렌더링된 요소 목록을 갱신할 때 기본적으로 "in-place-patch" 전략을 사용한다.<br>
+                데이터 항목의 순서가 변경된 경우 항목의 순서와 일치하도록 DOM 요소를 이동하는 대신 Vue는 각 요소를 적절한 위치에 배치하고<br>
+                해당 인덱스에서 렌더링할 내용을 반영하는지 확인한다.<br><br>
+
+                이 기본 모드는 효율적이지만 목록의 출력 결과가 하위 컴포넌트 상태 또는 임시 DOM 상태(예 : 폼 input)에 의존하지 않는 경우에 적합<br><br>
+
+                각 노드의 id를 추적하여, 재사용하거나 순서를 변경하는 등의 작업을 위해 각 아이템에 유일한 key 속성을 주어, vue에게 힌트를 줄 수 있다.
+                <div class="pre">
+                    <div class="example6">
+                        <div v-for="item in items" :key="item.id">
+                            <!-- content -->
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        반복되는 DOM 내용이 단순한 경우나 의도적인 성능 향상을 위해 기본 동작에 의존하지 않는 경우를 제외하면,<br>
+                        가능하면 언제나 「v-for」「key」를 추가하는 것이 좋다.<br><br>
+
+                        key는 Vue가 노드를 식별하는 일반적인 메커니즘이기 때문에 v-for과는 특별히 연관되지 않는 다른 용도로 사용된다.<br><br>
+
+                        객체나 배열처럼, 기본 타입(Primitive value)이 아닌 값을 v-for의 키로 사용해서는 안된다. 대신 문자열이나 숫자를 사용하자
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_form" id="Fourth_">
+            <div class="box_title">
+                Title : Fourth<br>
+                &lt; 배열 변경 감지 &gt; <br>
+            </div>
+            <div class="box_explain">
+                <div>#변이 메소드 </div>
+                Vue는 감시중인 배열의 변이 메소드를 rapping하여 뷰 갱신을 trigger한다.<br>
+                래핑된 메소드는 다음과 같다.
+                <ul>
+                    <li>push()</li>
+                    <li>pop()</li>
+                    <li>shift()</li>
+                    <li>unshift()</li>
+                    <li>splice()</li>
+                    <li>sort()</li>
+                    <li>reverse()</li>
+                </ul>
+                console창에서 변형 메소드를 호출하여 이전의 예제의 items 배열로 사용할수 있다.(배열을 변경한다는 뜻)<br>
+                예) example1.items.push({message : 'Baz'})<br>
+                <hr>
+                <div>#배열 교체(다음 내용을 보면 이해가 쉽다.)</div>
+                이름에서 알 수 있듯이 변이 메소드는 호출된 원래 배열을 변경한다.<br>
+                이에 비해 filter(), concat(), slice()와 같은 배열을 변경하지는 않지만 항상 새 배열을 반환하는 <br>
+                비-변이 메소드도 있다.<br>
+                비-변이 메소드로 작업할 때 이전 배열을 새 배열로 바꿀 수 있다.
+                <div class="pre">
+                    example1.items = example1.items.filter(function(item){<br>
+                        return item.messae.match(/Foo/))<br>
+                    }
+                </div><br>
+                <hr>
+
+                <div>#필터링 / 정렬된 결과 표시</div>
+                때때로 원래 데이터를 실제로 변경하거나 재설정하지 않고, 배열의 필터링되거나 정렬된 버젼을 반환하고 싶은 경우가 있다.
+                <div class="pre">                
+                    <div id="example6">
+                        <ul>
+                            <li v-for="n in evenNumbers">
+                                {{ n }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                computed 속성이 실행 가능하지 않은 상황(예: 중첩된 v-for 루프 내부)에서는 다음 내용을 사용한다.
+                <div class="pre">
+                    <div id="example7">
+                        <!--set이라는 배열에 numbers라는 요소들이 들어있다.-->
+                        <ul v-for="numbers in sets">
+                            <!--이 요소들을 method 정의식을 이용해서 조건을 메긴것이다.-->
+                            <li v-for="n in even(numbers)">
+                                {{n}}
+                            </li>
+                        </ul>
+                    </div>
+                </div><br>
+                <hr>
+
+                <div>#범위가 있는 v-for</div>
+                v-for도 정수를 사용할 수 있다. 이 경우 템플릿을 여러 번 반복한다.
+                <div class="pre">
+                    <div id="example8">
+                        <span v-for="n in 20">{{ n }}</span>
+                    </div>
+                </div><br>
+                <hr>
+
+                <div>#&lt;template&gt;에서의 v-for</div>
+                템플릿의 v-if와 마찬가지로, v-for와 함께 &lt;template&gt;태그를 사용하여 여러 요소의 블록을 렌더링 할 수 있다.
+                <div class="pre">
+                    <div id="example9">
+                        <ul>
+                            <template v-for="item in items">
+                                <li>{{ item.msg }}</li>
+                                <li class="divider" role="presentation"></li>
+                            </template>
+                        </ul>
+                    </div>
+                </div><br>
+                <hr>
+
+                <div>#v-if가 있는 v-for</div>
+                v-if와 v-for를 같이 사용하는것은 권장하지는 않는다.<br>
+                동일한 노드에 있는 경우, v-if는 v-for보다 우선 순위가 높다.<br>
+                즉, v-if 조건은 v-for 범위의 변수에 접근할 수 없다.
+                <div class="pre">
+                    <li v-for="todo in tods" v-if="!todo.isComplete">
+                        {{ todo }}
+                    </li>
+                </div>
+                v-for를 래핑(wrapping)하는 template태그를 사용하면 문제를 해결할 수 있다.
+                <div class='pre'>
+                    <template v-for="todo in todos">
+                        <li v-if="!todo.isComplete">
+                            {{ todo }}
+                        </li>
+                    </template>
+                </div>
+            </div>
+        </div>
+        
+        <div class="box_form" id="Fifth_">
+            <div class="box_title">
+                Title : Fifth<br>
+                &lt; 컴포넌트의 v-for &gt; <br>
+            </div>
+            <div class="box_explain">
+                v-for를 사용자 정의 컴포넌트에 직접 사용할 수 있다.                
+                <div class="pre">
+                    <my-component v-for="item in items" :key="item.id"></my-component>
+                </div><br>
+            </div>
+            그러나 component에는 자체 범위가 분리되어 있기 때문에 컴포넌트에 데이터를 자동으로 전달하지는 않습니다.<br>
+            반복할 데이터를 컴포넌트로 전달하려면 props도 사용해아한다.
+            <div class="pre">
+                <my-compoent 
+                    v-for="(item, index) in items"
+                    :item="item"
+                    :index="index"
+                    :key="item.id">
+                </my-compoent>
+            </div>
+            item을 component에 자동으로 삽입하지 않는 이유는 component가 v-for 작동방식과 밀접하게 연결되어 있기때문,<br>
+            데이터의 출처를 명시하면 다른 상황에서 component를 재사용이 가능하다.<br>
+            다음은 todo list의 완전 정리 예
+            <div id="todo-list-example">
+                <form v-on:submit.prevent="addNewTodo">
+                  <label for="new-todo">Add a todo</label>
+                  <input
+                    v-model="newTodoText"
+                    id="new-todo"
+                    placeholder="E.g. Feed the cat"
+                  >
+                  <button>Add</button>
+                </form>
+                <ul>
+                  <li
+                    is="todo-item"
+                    v-for="(todo, index) in todos"
+                    v-bind:key="todo.id"
+                    v-bind:title="todo.title"
+                    v-on:remove="todos.splice(index, 1)"
+                  ></li>
+                </ul>
+              </div>
+            <!-- <div id=todo-list-example>
+                <form v-on:submit.prevent="addNewTodo">
+                    <label for="new-todo">Add a todo</label>
+                    <input 
+                        v-model="newTodoText"
+                        id="new-todo"
+                        placeholder="E.g. Feed the cat"
+                    />
+                    <button>Add</button>
+                </form>
+                <ul>
+                    <todo-item
+                        v-for="(todo, index) in todos"
+                        :key="todo.id"
+                        :title="todo.title"
+                        @remove="todos.splice(index, 1"
+                    ></todo-item>
+                </ul>
+            </div>
+
+            <div id="todo-list-example" class="demo">
+                <form v-on:submit.prevent="addNewTodo">
+                  <label for="new-todo">Add a todo</label>
+                  <input
+                    v-model="newTodoText"
+                    id="new-todo"
+                    placeholder="E.g. Feed the cat"
+                  />
+                  <button>Add</button>
+                </form>
+                <ul>
+                  <todo-item
+                    v-for="(todo, index) in todos"
+                    v-bind:key="todo.id"
+                    v-bind:title="todo.title"
+                    v-on:remove="todos.splice(index, 1)"
+                  ></todo-item>
+                </ul>
+              </div> -->
+        </div>
+        
+
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index6.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index8.html">
+                    NEXT　⇨
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
+    <script src="js/7_js.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>
