@@ -35,3 +35,34 @@ Vue.createApp({
         }
     }
 }).mount('#inline-handler')
+
+//example4
+var vm4 = Vue.createApp({
+    methods : {
+        warn(message, event) {
+            // 네이티브 이벤트에 접근 할 수 있다.
+            if(event) {
+                event.preventDefault()
+            }
+            alert(message)
+        }
+    }
+}).mount('#example4')
+
+//example5
+var vm5 = Vue.createApp({
+    methods : {
+        one(message, event) {
+            if(event) {
+                event.preventDefault()
+            }
+            alert(message)
+        },
+        two(message2, event) {
+            if(event) {
+                event.preventDefault()
+            }
+            alert(message2)
+        }
+    }
+}).mount('#example5')

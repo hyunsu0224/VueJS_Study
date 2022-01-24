@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="box_form" id="Second_">
+        <div class="box_form" id="second_">
             <div class="box_title">
                 Title : Second<br>
                 &lt; 메소드 이벤트 핸들러 &gt; <br>
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="box_form" id="Third_">
+        <div class="box_form" id="third_">
             <div class="box_title">
                 Title : Third<br>
                 &lt; inline method handler &gt; <br>
@@ -89,7 +89,187 @@
                         <button @click="say('what')"> Say What</button>
                     </div>
                 </div>
+                때로 인라인 명령문 핸들러에서 원본 DOM 이벤트에 액세스를 해야할 수도 있다. <br>
+                특별한 $event를 사용해 메소드에 전달이 가능하다.
+                <div class="pre">
+                    <div id="example4">
+                        <button @click ="warn('Form cannnot be submitted yet.',$event)">
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="box_form" id="fourth_">
+            <div class="box_title">
+                Title : Fourth<br>
+                &lt; 복합 이벤트 핸들러 &gt; <br>
+            </div>
+            <div class="box_explain">
+                연산자를 사용하여 이벤트 핸들러 안에서 복합 메소드를 지정할 수 있다.
+                    <div id="example5">
+                        <button @click ="one('test1',$event), two('test2',$event)">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_form" id="fifth_">
+            <div class="box_title">
+                Title : Fifth<br>
+                &lt; 이벤트 수식어 &gt; <br>
+            </div>
+            <div class="box_explain">
+                이벤트 핸들러 내부에서 event,preventDefault() 또는 event.stopPropagation()를 호출하는 것은 매우 보편적인 일이다.<br>
+                메소드 내에서 쉽게 이 작업을 할 수 있지만, DOM 이벤트 세부 사항을 처리하는 대신 데이터 로직에 대한 메소드만 사용할 수있다면 더 좋다.<br>
+                이 문제를 해결하기 위해서 Vue는 v-on 이벤트에 이벤트 수식어를 제공할 수 있도록 만들었다.
+
+                <div class="pre">
+                    <ul>
+                        <li>.stop</li>
+                        <div style="border-bottom : 1px solid  black;">
+                            <div>클릭 이벤트 전파가 중단되도록 함</div>
+                            <a @click.stop="doThis"></a>
+                        </div>
+
+                        <li>.prevent</li>
+                        <div style="border-bottom : 1px solid  black;">
+                            <div>제출 이벤트가 페이지를 다시 로드하지 않는다.</div>
+                            <form @submit.prevent="onSubmit"></form>
+                        </div>
+                        <li>.capture</li>
+                        <div style="border-bottom : 1px solid  black;">
+                            <div>수정자는 chaining이 가능하다.</div>
+                            <a @click.stop.prevent="doThat"></a>
+                        </div>
+
+                        <li>.self</li>
+                        <div style="border-bottom : 1px solid  black;">
+                            <div>단순히 수식어만 사용이 가능하다.</div>
+                            <form @submit.prevent></form>
+                        </div>
+
+                        <li>.once</li>
+                        <div style="border-bottom : 1px solid  black;">
+                            <div>캡처 모드를 사용할 때 이벤트 리스너를 사용이 가능하다</div>
+                            <div>즉, 내부 요소를 대상으로 하는 이벤트가 해당 요소에서 처리되기 전에 여기에서 처리</div>
+                            <div @click.capture="doThis"></div>
+                        </div>
+
+                        <li>.passive</li>
+                        <div style="border-bottom : 1px solid  black;">
+                            <div>event.target이 요소 자체인 경우에만 trigger를 처리한다.</div>
+                            <div>자식 요소에서는 처리되지 않는다.</div>
+                            <div @click.self="doThat"></div>
+                        </div>
+                    </ul>
+                </div>
+
+                관련 코드가 동일한 순서로 생성되므로 수식어를 사용할 때 순서를 지정해야한다.<br>
+                v-on:click.prevent.self는 모든 요소의 클릭 이벤트를 막을 수 있다.<br>
+                v-on:click.self.prevent는 요소 자체에 대한 클릭만 방지한다.<br>
+                <hr>
+                Native DOM event에 독점적인 다른 수식어들과는 달리 .once 수식어는 복합 수식어 중에서도 무조건 한번은 실행된다.<br>
+                또한, Vue는 addEventListener의 passive option에 해당하는 .passive 수식어도 제공한다.
+                <div class='pre'>
+                    <div>스크롤의 기본 이벤트를 취소할 수는 없다.</div>
+                    <div>바로, 'onScroll'이 완료되는 것을 기다리도록 대신한다.</div>
+                    <div>이 경우에 기능에는 'event.preventDefault()를 포함하고 있다.</div>
+                    <div @scroll.passive = "onScroll"></div>
+                </div>
+                특히 .passive 수식어는 모바일 환경에서 성능향상에 도움이 된다.<br>
+                .prevent 수식어는 무시되고 브라우저에서 오류를 발생시키기 때문에 .passive 수식어와 .prevent 수식어를 함께 사용해서는 안된다.<br>
+                .passive 수식어는 당신이 이벤트의 기본 행동을 무시하지 않고 원하는 브라우저와 상호작용을 우선적으로 진행한다.
+            </div>
+        </div>
+
+        <div class="box_form" id="sixth_">
+            <div class="box_title">
+                Title : Sixth<br>
+                &lt; 키 수식어 &gt; <br>
+            </div>
+            <div class="box_explain">
+                키보드 이벤트를 사용할 때, 공동 키 코드를 확인해야한다.<br>
+                Vue에서 키 이벤트를청취할 때 키 수식어로 v-on 또는 @를 더할 수 있다.
+                <div class="pre">
+                    <div>키가 'Enter'일때만 'vm.submit()'을 호출할 수 있다.</div>
+                    <input @keyup.enter="submit" />
+                </div>
+                
+                KeyboardEvent.key 를 통해 노출된 유효 키 이름을 camelCase로 변환하여 수식어로 사용할 수 있다.
+                <div class="pre">
+                    <input @keyup.page-down = "onPageDown" />
+                </div>
+                위의 예제에서 handler는 $event.key === PageDown 일때만 호출이 가능하다.<br>
+                <hr>
+                <div>키 명령어</div>
+                Vue에서 가장 흔히 사용되는 키 명령어 정리
+                <ul>
+                    <li>.enter</li>
+                    <li>.tab</li>
+                    <li>.delete("Delete"와 "BackSpace"키 모두 작동한다.</li>
+                    <li>.esc</li>
+                    <li>.space</li>
+                    <li>.up</li>
+                    <li>.down</li>
+                    <li>.left</li>
+                    <li>.right</li>
+                </ul>
+            </div> 
+        </div>
+
+        <div class="box_form" id="seventh_">
+            <div class="box_title">
+                Title : Seventh<br>
+                &lt; 시스템 수식어 키목록 &gt; <br>
+            </div>
+            <div class="box_explain">
+                다음 수식어를 사용해 해당 수식어 키가 눌러진 경우에만 마우스 또는 키보드 Event Listener를 trigger할 수 있다.
+                <div class="pre">
+                    <ul>
+                        <li>.ctrl</li>
+                        <li>.alt</li>
+                        <li>.shift</li>
+                        <li>.meta</li>
+                    </ul>
+                </div>
+                예시 :
+                <div class="pre">
+                    <div style="border-bottom : 1px solid black;">
+                        <div>Alt + Enter</div>
+                        <input @keyup.alt.enter = 'clear' />
+                    </div>
+                    
+                    <div style="border-bottom : 1px solid black;">
+                        <div>Ctrl + Enter</div>
+                        <div @click.ctrl = 'doSomething'>Do something</div>
+                    </div>
+                </div><br>
+                <hr>
+                <div>.exact 수식어</div>
+                .exact 수식어는 다른 시스템 수식어와 조합해 handler가 실행됙 ㅣ위해 정확한 조합을 눌러야하는것을 요구한다.
+                <div class="pre">
+                    <div>아래 코드는 Alt 또는 Shift와 함께 눌렀을 때도 실행된다.</div>
+                    <button @click.ctrl="onClick">A</button>
+                    <div>아래 코드는 Ctrl키만 눌려져 있을 때 실행된다.</div>
+                    <button @click.ctrl.exact="onCtrlClick">A</button>
+                    <div>아래 코드는 시스템 키가 눌리지 않은 상태인 경우에만 작동한다.</div>
+                    <button @click.exact="onClick">A</button>
+                </div><br>
+                <hr>
+                <div>마우스 버튼 수식어</div>
+                <div class="pre">
+                    <ul>
+                        <li>.left</li>
+                        <li>.right</li>
+                        <li>.middle</li>
+                    </ul>
+                </div>
+                위 수식어는 특정 마우스 버튼에 의해 트리거된 이벤트로 핸들러를 제한한다.
+            </div> 
         </div>
 
         <div class="page_move_">

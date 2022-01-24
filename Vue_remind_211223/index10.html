@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10번째</title>
+    <!-- 구 version vue -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+    <!-- 최신 version vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/1_css.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper_">
+        <!-- 1 -->
+        <div class="page_ttl_">
+            <h2>
+                열번째 Study<br>
+                폼 입력 바인딩<br>
+                (Form input binding)
+            </h2>
+        </div>
+        <div class="page_hashtag_">
+            <ul>
+                <li>
+                    <a href="#first_">#컴포넌트</a>
+                </li>
+                <li>
+                    <a href="#second_">#값 바인딩하기</a>
+                </li>
+                <li>
+                    <a href="#third_">#상태 유지</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box_explain" style="margin : 0 auto; text-align: center;">
+            
+        </div>
+        <div class="box_form" id="first_">
+            <div class="box_title">
+                Title : First<br>
+                &lt; 컴포넌트의 기초 &gt; <br>
+            </div>
+            <div class="box_explain">
+                <div>기본 예제</div>
+                <div class="pre">
+                    <div id="example1">
+                        <button-counter></button-counter>
+                    </div>
+                </div>
+                컴포넌트는 재사용 가능한 instance이므로,data, computed, watch, methods와 라이프 사이클 훅과 같은<br>
+                루트 인스턴스와 같은 옵션을 허용한다.<br>
+                유일한 예외는 el과 같은 몇가지 루트만의 옵션(root-specific options)이다.
+            </div>
+        </div>
+
+        <div class="box_form" id="second_">
+            <div class="box_title">
+                Title : Second<br>
+                &lt; 컴포넌트의 재사용 &gt; <br>
+            </div>
+            <div class="box_explain">
+                <div>컴포넌트는 얼마든지 반복해서 재사용을 할 수 있다.</div>
+                <div class="pre">
+                    <div id="example2">
+                        <button-counter></button-counter>
+                        <button-counter></button-counter>
+                        <button-counter></button-counter>
+                        <button-counter></button-counter>
+                    </div>
+                </div>
+                버튼을 클릭할 때 각 버튼은 별도의 count를 유지한다.<br>
+                컴포넌트를 사용할 때마다 새로운 인스턴스가 만들어지기 때문이다.
+            </div>
+        </div>
+
+        <div class="box_form" id="third_">
+            <div class="box_title">
+                Title : Third<br>
+                &lt; 컴포넌트 구성하기 &gt; <br>
+            </div>
+            <div class="box_explain">
+                <div>애플리케이션이 중첩된 컴포넌트 트리로 구성되는 것은 일반적이다.</div>
+                예를 들어 헤더, 사이드바, 컨텐츠 영역에 대한 컴포넌트가 있을 수 있으며, 각각 일반적으로 네비게이션 링크<br>
+                블로그 글 등에 대한 다른 컴포넌트를 포함한다.<br><br>
+                
+                템플릿에서 이러한 컴포넌트를 사용하려면, Vue가 해당 컴포넌트에 대해 알 수 있도록 등록해야한다.<br>
+                컴포넌트 등록에는 global(전역등록)등록과 local(지역등록)등록의 2가지 유형이 있다.<br>
+                지금까지 생성된 앱의 component 메소드를 사용해서 컴포넌트를 전역으로 등록해왔다.<br>
+                전역적으로 등록된 컴포넌트는 나중에 생성된 app 인스턴스의 템플릿에서 사용할 수 있으며, 해당 루트 인스턴스의<br>
+                컴포넌트 트리의 모든 하위 컴포넌트에서도 사용할 수 있다.<br>
+            </div>
+        </div>
+
+        <div class="box_form" id="fourth_">
+            <div class="box_title">
+                Title : Fourth<br>
+                &lt; Props를 이용해 자식 컴포넌트에게 데이터 전달하기 &gt; <br>
+            </div>
+            <div class="box_explain">
+                앞서서 블로그 포스팅을 위한 컴포넌트 생성에 대해 언급했다.<br>
+                문제는 화면에 보여줄 특정 게시문의 제목, 내용과 같은 데이터를 전달할 수 없으면, 해당 컴포넌트가 유용하지 않다는 것이다<br>
+                이렇게 컴포넌트에 데이터를 넘기기 위해 props가 등장하게 된다.<br><br>
+                Props는 컴포넌트에 등록할 수 있는 커스텀 속성이다.<br>
+                값이 prop속성에 전달되면, 그 값은 해당 컴포넌트 인스턴스의 속성이 된다.<br>
+                blog-post 컴포넌트에 제목을 전달하기 위해 props 옵션을 사용하여 이 컴포넌트가 허용하는 prop 목록에 제목을 포함가능하다.
+
+                <div class="pre">
+                    <div id="example3"> 
+                        <blog-post title="go"></blog-post>
+                        <blog-post title="go2"></blog-post>
+                        <blog-post title="go3"></blog-post>
+                    </div>
+                </div>
+                <br>
+                일반적인 앱에서는 data에 posts 배열이 있을수도 있다.
+                <div class="pre">
+                    <div id="example4">
+                        <blog-post
+                            v-for="post in posts"
+                            :key="post.id"
+                            :title="post.title"></blog-post>
+                    </div>
+                </div>
+                위에서 v-bind를 사용해서 props를 동적으로 전달할 수 있음을 알 수 있다.<br>
+                이는 미리 렌더링할 정화한 컨텐츠를 모르는 경우가 특히 유용하다.<br><br>
+                지금까지 prop에 대해 알아야할 모든 것들이고 전체가이드를 나중에 읽어보자
+            </div>
+        </div>
+        <div class="box_form" id="fifth_">
+            <div class="box_title">
+                Title : Fifth<br>
+                &lt; 하위 컴포넌트 이벤트 수신 &gt; <br>
+            </div>
+            <div class="box_explain">
+                blog-post컴포넌트를 개발할 때, 일부 기능은 상위와 다시 통신해야 할 수 있다.<br>
+                예를 들어, 블로그 게시물의 텍스트를 확대하고 나머지 페이지는 기본 크기로 유지하는 접근성 기능을 포함할 수 있다.<br><br>
+                상위 컴포넌트의 data 속성에 postFontSize를 추가하여 이 기능을 지원할 수 있다.
+                <div class="pre">
+                    <div id="example5">
+                        <div v-bind:style="{fontSize : postFontSize + 'em'">
+                            <blog-post v-for="post in posts" :key="post.id" :title="title">asd</blog-post>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page_move_">
+            <div class="prev_page_">
+                <a href="./index9.html">
+                    ⇦　PREV
+                </a>
+            </div>
+            <div class="next_page_">
+                <a href="./index11.html">
+                    NEXT　⇨
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 맨 마지막에 로드 함으로써 js 파일 내부의 요소를 html에 넣는다. -->
+    <script src="js/10_js.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>
