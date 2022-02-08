@@ -420,8 +420,46 @@ fieldset, legend
 입력 양식과 같은 부분을 fieldset 하여 legend 제목을 지정하는 것이다 박스 안에 내용물을 집어 넣는것처럼
 legend(제목)을 float를 이용해서 right left top 다양한 위치에 지정이 가능하다. bottom은 안된다.
 
+fieldset ➡ 같은 목적의 양식을 그룹화 (disabled, form, name)
+
 --------------------------------------
+
+옵션(optgroup, option)의 선택 메뉴(select)나 자동완성(datalist)을 제공
+<select>
+  <optgroup label="Coffee">
+    <option>Americano</option>
+    <option label="Cappuccino" value="Cappuccino"></option>
+  </optgroup>
+  <optgroup label="Latte" disabled>
+    <option>Caffe Latte</option>
+    <option>Vanilla Latte</option>
+  </optgroup>
+</select>
+
+select ➡ autocomplete, disabled, form, multiple, name, size(한번에 볼 수 있는 행의 개수)
+datalist(input에 미리 정의된 옵션을 지정하여 자동완성 하는 기능을 제공하는데 사용) ➡ input의 list 속성 바인딩, option을 포함하여 정의된 옵션을 지정
+optgroup ➡ option을 그룹화(label(옵션의 그룹 이름), disabled)
+option ➡ 선택 메뉴(select)나 자동완성(datalist)에서 사용될 옵션(disabled, label, selected, value)
+
+progress ➡ 작업의 완료 진행률을 표시(max : 작업의 총량, value : 작업의 진행량(max를 생략할 경우 0 ~ 1 사이의 숫자여야 함))
+<progress value="70" max="100"> 70%</progress>
+
 --------------------------------------
+
+전역 속성(Global Attributes) ➡ 모든 HTML 요소에서 공통적으로 사용 가능한 속성
+class, id, style, title, lang, data-*, draggable, hidden, tabindex, 
+
+select자리에 datalist를 자리 할수 있다. datalist는 칸에서 직접 값을 입력하여서 일치하는 값으로 자동 완성이 가능하다.
+select에서는 입력을 하여도 보이지는 않지만 파일 탐색과 같이 일치하는 값을 불러온다.
+optgroup는 옵션의 제목을 지정하는 것이다.
+
+--------------------------------------
+
+생략한 요소
+template, map, area, picture, source, track, embed, object, param, 
+
+--------------------------------------
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1.4 レスポンシブWebデザイン
 
