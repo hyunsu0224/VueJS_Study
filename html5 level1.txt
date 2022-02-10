@@ -551,7 +551,12 @@ max-height를 지정한다고 해도 윈도우 너비에 따라 높이가 변경
 portrait는 width > height  가로로 눕힌 상태
 
 
-4.11
-vmax
-
-vmin
+<picture>
+ <source media="(max-width: 500px)" srcset="A.jpg, B.jpg 2x">
+  <img src="C.jpg" srcset="D.jpg 2x" alt="">
+</picture>
+위의 예문의 경우에는 
+뷰포트의 너비가 500px 이하인 경우에는 A.jpg 또는 B.jpg가 표시되는데 이중에서도,
+픽셀의 밀도가 2배인 환경의 경우에는 B.jpg가 표시된다.
+뷰포트의 너비가 500px 이상인 경우에서는 C.jpg 또는 D.jpg가 표시되는데 이중에서도,
+픽셀의 밀도가 2배인 환경의 경우에는 D.jpg가 표시된다.
