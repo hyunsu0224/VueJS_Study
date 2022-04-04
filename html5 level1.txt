@@ -192,9 +192,10 @@ box-shadow :
 カスケード(스타일의 우선순위)
 1. !important가 있는 user 스타일시트
 2. !important가 있는 제작자 스타일시트
-3. user agent(browser) 스타일시트
+3. 제작자 스타일 시트
 4. user 스타일 시트
-5. 제작자 스타일 시트
+5. user agent(browser) 스타일시트
+
 
 상세도에 따른 우선순위
 태그의 style 속성에 직접 쓰기	style=”color: red;”	1000 포인트
@@ -242,11 +243,11 @@ source 요소 ➡ HTML 5.1 ver에서 부터 picture 요소 내에서도 사용�
 
 abbr 요소 ➡ 약어를 지정 abbr title="HyperText Markup Language">HTML</abbr>로 지정하면 HTML 글자에 마우스를 올리면 전체 글자가 나온다.
 mark 요소 ➡ 형광펜처럼 기본 노란색이 나온다.黄色
-q 요소 ➡ 콘텐츠 카테고리는 (flow content, freezing ocntent)이다.
+q 요소 ➡ 콘텐츠 카테고리는 (flow content, freezing content)이다.
 	따옴표 안에 표시가 된다.
 	cite 속성으로 지정하여 인용문에 관한 정보가 있는 URL을 표기한다.
 	인용문을 지정할때 꼭 q 요소가 아니여도된다.
-	따옴표를 붙일 목적으로 사용해서는 안된다.
+	따옴표를 붙일 목적으로 사용해서는 안된다. 인용문구의 따옴표일경우에만 가능
 
 a 요소 ➡ a요소에는 interactive content는 넣을수가 없다. 예를 들면 a, label, iframe, tabindex등이된다.
 hr 요소 ➡ 단락 레벨에서의 주제변화를 나타내는 요소이다. 섹션이 변하지 않는다는 것을 나타내기 위해 있는 것
@@ -609,3 +610,4 @@ HLS와 MPEG-DASH는 MSE와 같은 기술을 사용하면 기존에 같은 파일
 
 Geolocation API를 사용하면 GPS, WiFi, IP주소, 기지국 등에서 장치의 위치 정보를 위도, 경도, 고도 및 해당 오차, 방향 및 속도를 얻을 수 있다.
 緯度、経度、方角と速度を取得できる
+
