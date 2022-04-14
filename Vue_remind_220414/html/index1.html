@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index1</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-    <!-- <script type="module">
-        import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
-      </script> -->
-      <script src="../js/index1.js"></script>
-      <link rel="stylesheet" src="../css/common.css"/>
-      <link rel="stylesheet" src="../css/private.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index1</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script><script type="module">
+    import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+  </script> -->
+  
+  <link rel="stylesheet" src="../css/common.css"/>
+  <link rel="stylesheet" src="../css/private.css"/>
 </head>
 <body>
-    
+  <style>
+    div {
+      margin-bottom : 50px;
+    }
+  </style>
+  <div id="counter">
+    Counter : {{ counter }}
+  </div>
+
+  <div id="bind-attribute">
+    <snan v-bind:title="message">
+      {{ message }}
+    </snan>
+  </div>
+
+  <div id="bind-attribute_remind">
+    {{ message }}
+  </div>
+
+  <div id="count_num">
+    {{ counter }}
+  </div>
 </body>
+
+<script src="../js/index1.js"></script>
 </html>
