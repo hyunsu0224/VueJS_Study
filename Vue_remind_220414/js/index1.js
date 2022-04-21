@@ -98,7 +98,8 @@ const TodoList = {
 }
 const app = Vue.createApp(TodoList);
 
-app.component('todo-item', {
+// 컴포넌트란 요소로써 <todo-item></todo-item>이 요소를 이제 사용이 가능하다.
+app.component('todo-item', {            //컴포넌트명을 지정하고,
     props : ['todo'],
     template : `<li>{{todo.text}}</li>`
 })
@@ -110,12 +111,39 @@ app.mount('#todo-list-app')
 //     /* options */
 // })
 
-const app_1 = Vue.createApp({})
-app_1.component('SearchInput', SearchInputComponent)
-app_1.directive('focus', FocusDirective)
-app_1.use(LocalPlugin)
 
-Vue.createApp({})
-   .component('SearchInput', SearchInputComponent)
-   .directive('focus', FocusDirective)
-   .use(LocalePlugin)
+
+// const app2 = Vue.createApp({
+//     data() {
+//         return { count : 5 }
+//     }
+// })
+
+// const vm = app2.mount('#app2');
+
+// console.log(vm.count);
+
+/*--------------------------------------------------*/
+
+// const app2 = Vue.createApp({
+//     data() {
+//       return { count: 4 }
+//     }
+//   })
+  
+//   const vm = app2.mount('#app2')
+  
+//   console.log(vm.count) // => 4
+
+/*--------------------------------------------------*/
+
+var test2 = Vue.createApp({
+    data() {
+        return { count : 1 }
+    },
+    created() {
+        console.log('count is: ' + this.count / 3)
+    }
+})
+
+var vm2 = test2.mount("#test2");
